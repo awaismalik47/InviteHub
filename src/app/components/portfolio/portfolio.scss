@@ -54,6 +54,10 @@
   background: var(--color-accent);
 }
 
+.portfolio__swiper::part(wrapper) {
+  align-items: center;
+}
+
 /* Custom nav buttons, kept outside the swiper-container entirely so they
    can sit in the section's own gutter without being clipped by Swiper's
    internal overflow:hidden slide track. */
@@ -94,113 +98,138 @@
 }
 
 .portfolio__slide {
-  width: auto;
+  width: 168px;
   height: auto;
-  opacity: 0.55;
-  transform: scale(0.93);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.portfolio__slide.swiper-slide-active,
-.portfolio__slide.swiper-slide-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ---------- Reel card ---------- */
-.reel {
-  position: relative;
-  width: min(72vw, 240px);
-  aspect-ratio: 9 / 16;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-lift);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
+}
+
+/* ---------- Reel card: a tiered "coverflow" depth effect where the active
+   slide sits taller and elevated, with immediate neighbours a step down and
+   everything else at the base tier. ---------- */
+.reel {
+  position: relative;
+  width: 168px;
+  height: 240px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  z-index: 1;
+  transition: width 0.4s ease, height 0.4s ease, box-shadow 0.4s ease;
+}
+
+.swiper-slide-prev .reel,
+.swiper-slide-next .reel {
+  height: 300px;
+  z-index: 2;
+}
+
+.swiper-slide-active .reel {
+  height: 380px;
+  box-shadow: var(--shadow-lift);
+  z-index: 3;
 }
 
 .reel--v1 {
-  background: linear-gradient(165deg, #6C5AA0 0%, #4A3B78 55%, #3D3163 100%);
+  background: linear-gradient(165deg, #241b35 0%, #0f0c17 100%);
 }
 .reel--v2 {
-  background: linear-gradient(165deg, #C99B3A 0%, #E9C46A 55%, #B98A2E 100%);
+  background: linear-gradient(165deg, #2b2414 0%, #16120a 100%);
 }
 .reel--v3 {
-  background: linear-gradient(165deg, #9B7BC4 0%, #5B4B8A 55%, #3D3163 100%);
+  background: linear-gradient(165deg, #221a30 0%, #100c18 100%);
 }
 .reel--v4 {
-  background: linear-gradient(165deg, #D8B4E2 0%, #9B7BC4 55%, #5B4B8A 100%);
+  background: linear-gradient(165deg, #261c34 0%, #120e1c 100%);
 }
 
 .reel__platform {
   position: absolute;
-  top: 0.9rem;
-  left: 0.9rem;
+  top: 0.85rem;
+  left: 0.85rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--color-primary-dark);
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
 }
 
 .reel__sparkle {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.95rem;
+  right: 0.95rem;
   opacity: 0.85;
 }
 
 .reel__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 58px;
-  height: 58px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.swiper-slide-prev .reel__play,
+.swiper-slide-next .reel__play {
+  width: 52px;
+  height: 52px;
+}
+
+.swiper-slide-active .reel__play {
+  width: 64px;
+  height: 64px;
+}
+
+/* ---------- Meta: name + verified badge + star rating, below the card ---------- */
+.reel-meta {
+  text-align: center;
+  margin-top: 0.85rem;
+}
+
+.reel-meta__name {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(20, 14, 40, 0.25);
-}
-
-.reel__caption {
-  position: relative;
-  padding: 1rem 1rem 1.15rem;
-  background: linear-gradient(0deg, rgba(20, 14, 40, 0.68) 0%, rgba(20, 14, 40, 0.15) 70%, transparent 100%);
-}
-
-.reel__tag {
-  display: inline-block;
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.22);
-  padding: 0.25em 0.7em;
-  border-radius: 999px;
-  margin-bottom: 0.5rem;
-}
-
-.reel__heading {
-  font-family: var(--font-display);
+  gap: 0.3rem;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 1.05rem;
-  color: #fff;
-  margin: 0 0 0.15rem;
+  font-size: 0.86rem;
+  color: var(--color-primary-dark);
+  margin: 0;
+  transition: font-size 0.4s ease;
 }
 
-.reel__sub {
-  font-size: 0.76rem;
-  color: rgba(255, 255, 255, 0.82);
-  margin: 0;
+.swiper-slide-prev .reel-meta__name,
+.swiper-slide-next .reel-meta__name {
+  font-size: 0.94rem;
+}
+
+.swiper-slide-active .reel-meta__name {
+  font-size: 1.1rem;
+}
+
+.reel-meta__check {
+  flex-shrink: 0;
+}
+
+.reel-meta__stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  margin-top: 0.3rem;
 }
 
 @media (min-width: 900px) {
@@ -212,8 +241,20 @@
     display: flex;
   }
 
+  .portfolio__slide {
+    width: 190px;
+  }
+
   .reel {
-    width: 100%;
-    max-width: 260px;
+    width: 190px;
+  }
+
+  .swiper-slide-prev .reel,
+  .swiper-slide-next .reel {
+    height: 330px;
+  }
+
+  .swiper-slide-active .reel {
+    height: 420px;
   }
 }

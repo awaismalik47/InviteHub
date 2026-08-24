@@ -12,7 +12,12 @@ interface FilterTab {
 
 interface SwiperContainerEl extends HTMLElement {
   initialize: () => void;
-  swiper?: { update: () => void; slideTo: (index: number) => void; slidePrev: () => void; slideNext: () => void };
+  swiper?: {
+    update: () => void;
+    slideToLoop: (index: number) => void;
+    slidePrev: () => void;
+    slideNext: () => void;
+  };
 }
 
 @Component({
@@ -49,18 +54,18 @@ export class Portfolio implements AfterViewInit {
     const el = this.swiperEl().nativeElement;
 
     Object.assign(el, {
-      slidesPerView: 1.15,
+      slidesPerView: 'auto',
       centeredSlides: true,
-      spaceBetween: 16,
+      loop: true,
+      spaceBetween: 20,
       grabCursor: true,
       speed: 500,
       pagination: { clickable: true },
       keyboard: { enabled: true },
       a11y: { enabled: true },
       breakpoints: {
-        640: { slidesPerView: 2.1, spaceBetween: 20, centeredSlides: false },
-        1024: { slidesPerView: 3.2, spaceBetween: 28, centeredSlides: false },
-        1400: { slidesPerView: 4, spaceBetween: 32, centeredSlides: false },
+        900: { spaceBetween: 32 },
+        1400: { spaceBetween: 44 },
       },
     });
     el.initialize();
@@ -72,7 +77,7 @@ export class Portfolio implements AfterViewInit {
     if (this.activeFilter() === id) return;
     this.activeFilter.set(id);
     requestAnimationFrame(() => {
-      this.swiperEl().nativeElement.swiper?.slideTo(0);
+      this.swiperEl().nativeElement.swiper?.slideToLoop(0);
       this.swiperEl().nativeElement.swiper?.update();
     });
   }
