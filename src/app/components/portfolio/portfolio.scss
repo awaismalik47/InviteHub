@@ -38,28 +38,59 @@
 }
 
 /* ---------- Swiper ---------- */
+.portfolio__slider {
+  position: relative;
+}
+
 .portfolio__swiper {
   --swiper-theme-color: #{'#5B4B8A'};
-  --swiper-navigation-color: #5B4B8A;
-  --swiper-navigation-size: 20px;
   --swiper-pagination-color: #5B4B8A;
   --swiper-pagination-bullet-inactive-color: #D8B4E2;
   --swiper-pagination-bullet-inactive-opacity: 0.6;
   padding: 0.25rem 1.25rem 3.5rem;
 }
 
-.portfolio__swiper::part(button-prev),
-.portfolio__swiper::part(button-next) {
+.portfolio__swiper::part(bullet-active) {
+  background: var(--color-accent);
+}
+
+/* Custom nav buttons, kept outside the swiper-container entirely so they
+   can sit in the section's own gutter without being clipped by Swiper's
+   internal overflow:hidden slide track. */
+.portfolio__nav {
   display: none;
-  background: var(--color-white);
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  border: none;
+  background: var(--color-white);
+  color: var(--color-primary);
   box-shadow: var(--shadow-card);
+  cursor: pointer;
+  z-index: 5;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
-.portfolio__swiper::part(bullet-active) {
-  background: var(--color-accent);
+.portfolio__nav:hover {
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lift);
+}
+
+.portfolio__nav:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.portfolio__nav--prev {
+  left: 0.75rem;
+}
+
+.portfolio__nav--next {
+  right: 0.75rem;
 }
 
 .portfolio__slide {
@@ -174,11 +205,10 @@
 
 @media (min-width: 900px) {
   .portfolio__swiper {
-    padding: 0.25rem 2rem 4rem;
+    padding: 0.25rem 4.5rem 4rem;
   }
 
-  .portfolio__swiper::part(button-prev),
-  .portfolio__swiper::part(button-next) {
+  .portfolio__nav {
     display: flex;
   }
 

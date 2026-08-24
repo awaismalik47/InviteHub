@@ -12,7 +12,7 @@ interface FilterTab {
 
 interface SwiperContainerEl extends HTMLElement {
   initialize: () => void;
-  swiper?: { update: () => void; slideTo: (index: number) => void };
+  swiper?: { update: () => void; slideTo: (index: number) => void; slidePrev: () => void; slideNext: () => void };
 }
 
 @Component({
@@ -55,7 +55,6 @@ export class Portfolio implements AfterViewInit {
       grabCursor: true,
       speed: 500,
       pagination: { clickable: true },
-      navigation: true,
       keyboard: { enabled: true },
       a11y: { enabled: true },
       breakpoints: {
@@ -76,5 +75,13 @@ export class Portfolio implements AfterViewInit {
       this.swiperEl().nativeElement.swiper?.slideTo(0);
       this.swiperEl().nativeElement.swiper?.update();
     });
+  }
+
+  slidePrev(): void {
+    this.swiperEl().nativeElement.swiper?.slidePrev();
+  }
+
+  slideNext(): void {
+    this.swiperEl().nativeElement.swiper?.slideNext();
   }
 }

@@ -23,7 +23,19 @@
     </div>
   </div>
 
-  <swiper-container #swiperEl init="false" class="portfolio__swiper">
+  <div class="portfolio__slider">
+    <button type="button" class="portfolio__nav portfolio__nav--prev" aria-label="Previous reel" (click)="slidePrev()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button type="button" class="portfolio__nav portfolio__nav--next" aria-label="Next reel" (click)="slideNext()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <swiper-container #swiperEl init="false" class="portfolio__swiper">
     @for (item of filteredItems(); track item.id) {
       <swiper-slide class="portfolio__slide">
         <article class="reel" [class]="'reel--v' + item.variant" [attr.aria-label]="'Video reel: ' + item.title">
@@ -70,5 +82,6 @@
         </article>
       </swiper-slide>
     }
-  </swiper-container>
+    </swiper-container>
+  </div>
 </section>
