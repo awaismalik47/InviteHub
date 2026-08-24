@@ -1,0 +1,141 @@
+.contact {
+  background: linear-gradient(180deg, var(--color-bg), #FDFBFF);
+}
+
+.contact__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact__heading {
+  margin-bottom: 2rem;
+}
+
+.whatsapp-cta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 480px;
+  background: #25D366;
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.3rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 48px;
+
+  &:hover {
+    box-shadow: var(--shadow-lift);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+
+  strong {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  small {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.9;
+  }
+}
+
+.contact__panel {
+  width: 100%;
+  max-width: 560px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem 1.4rem;
+}
+
+@media (min-width: 640px) {
+  .contact__panel {
+    padding: 2.25rem;
+  }
+}
+
+.contact__success {
+  background: rgba(216, 180, 226, 0.3);
+  color: var(--color-primary-dark);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.25rem;
+  font-size: 0.92rem;
+
+  p { margin: 0; }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+}
+
+@media (min-width: 480px) {
+  .field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.8em 0.9em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(91, 75, 138, 0.3);
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 48px;
+  width: 100%;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.field__error {
+  font-size: 0.8rem;
+  color: #B3261E;
+}
+
+.contact__submit {
+  margin-top: 0.5rem;
+  width: 100%;
+}

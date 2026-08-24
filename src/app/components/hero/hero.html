@@ -1,0 +1,33 @@
+<section class="hero" id="hero">
+  <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
+  <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
+  <span class="hero__burst" #burst aria-hidden="true"></span>
+
+  <div class="container hero__inner" #heroContent>
+    <span class="eyebrow eyebrow--on-hero">Custom Invitation Design Studio</span>
+    <h1>Design that fits every celebration</h1>
+    <p class="hero__subline">
+      From weddings and engagements to birthdays and baby showers — thoughtfully designed
+      invitations for every milestone worth celebrating.
+    </p>
+    <div class="hero__ctas">
+      <button type="button" class="btn btn-primary" (click)="scrollTo('portfolio')">See our work</button>
+      <button type="button" class="btn btn-ghost-light" (click)="scrollTo('contact')">Book now</button>
+    </div>
+  </div>
+
+  <div class="hero__cover" #cover aria-hidden="true">
+    <span class="hero__cover-sparkle" #sparkle>
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="#E9C46A" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" />
+      </svg>
+    </span>
+    <span class="hero__cover-seal">
+      <svg viewBox="0 0 48 48" width="34" height="34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="12" width="34" height="24" rx="4" fill="#5B4B8A" />
+        <path d="M4 14 L21 27 L38 14" stroke="#F8F6FB" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+    <span class="hero__cover-word">InviteVibe</span>
+  </div>
+</section>

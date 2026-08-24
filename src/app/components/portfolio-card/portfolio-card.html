@@ -1,0 +1,28 @@
+<article
+  class="portfolio-card"
+  #card
+  tabindex="0"
+  [attr.aria-label]="'Sample invitation design: ' + item().title + ', ' + item().categoryLabel + ' category'"
+>
+  <div class="portfolio-card__face" [class]="'portfolio-card__face--v' + item().variant">
+    <span class="portfolio-card__sparkle" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="#E9C46A" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" />
+      </svg>
+    </span>
+
+    <div class="portfolio-card__frame">
+      <p class="portfolio-card__heading">{{ item().heading }}</p>
+      <p class="portfolio-card__subheading">{{ item().subheading }}</p>
+      <span class="portfolio-card__rule" aria-hidden="true"></span>
+      @for (line of item().detailLines; track line) {
+        <p class="portfolio-card__detail">{{ line }}</p>
+      }
+    </div>
+  </div>
+
+  <div class="portfolio-card__meta">
+    <span class="portfolio-card__tag">{{ item().categoryLabel }}</span>
+    <p class="portfolio-card__title">{{ item().title }}</p>
+  </div>
+</article>

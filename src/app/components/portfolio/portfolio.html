@@ -1,0 +1,30 @@
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Our work</span>
+      <h2>A closer look at our designs</h2>
+      <p>Sample content shown below — every piece is fully customised to your names, dates and venue.</p>
+    </div>
+
+    <div class="portfolio__tabs" role="tablist" aria-label="Filter portfolio by category">
+      @for (tab of tabs; track tab.id) {
+        <button
+          type="button"
+          role="tab"
+          class="portfolio__tab"
+          [class.portfolio__tab--active]="activeFilter() === tab.id"
+          [attr.aria-selected]="activeFilter() === tab.id"
+          (click)="setFilter(tab.id)"
+        >
+          {{ tab.label }}
+        </button>
+      }
+    </div>
+
+    <div class="portfolio__grid" #grid>
+      @for (item of filteredItems(); track item.id) {
+        <app-portfolio-card [item]="item" />
+      }
+    </div>
+  </div>
+</section>

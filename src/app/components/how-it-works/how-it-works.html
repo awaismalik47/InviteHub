@@ -1,0 +1,19 @@
+<section class="section how" id="how-it-works">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">How it works</span>
+      <h2>From idea to inbox, simply</h2>
+      <p>A straightforward process so you always know what happens next.</p>
+    </div>
+
+    <div class="how__list" #list>
+      @for (step of steps; track step.number) {
+        <div class="step">
+          <span class="step__number">{{ step.number }}</span>
+          <h3 class="step__title">{{ step.title }}</h3>
+          <p class="step__desc">{{ step.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

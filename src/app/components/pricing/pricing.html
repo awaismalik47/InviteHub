@@ -1,0 +1,15 @@
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Packages</span>
+      <h2>Pricing built around your suite</h2>
+      <p>Final pricing depends on your event — these tiers give you a starting point.</p>
+    </div>
+
+    <div class="pricing__grid" #grid>
+      @for (tier of tiers; track tier.id) {
+        <app-pricing-card [tier]="tier" (choose)="onChoose()" />
+      }
+    </div>
+  </div>
+</section>

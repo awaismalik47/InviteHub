@@ -1,0 +1,24 @@
+.logo {
+  display: block;
+}
+
+.logo--horizontal {
+  height: 34px;
+  width: auto;
+}
+
+.logo--stacked {
+  height: 96px;
+  width: auto;
+}
+
+.logo--icon {
+  height: 40px;
+  width: 40px;
+}
+
+@media (min-width: 768px) {
+  .logo--horizontal {
+    height: 40px;
+  }
+}

@@ -1,0 +1,16 @@
+<svg width="500" height="140" viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .wordmark { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; fill: #3D3163; }
+      .tagline { font-family: 'Poppins', 'Helvetica Neue', sans-serif; font-weight: 500; fill: #5B4B8A; letter-spacing: 3px; }
+    </style>
+  </defs>
+  <rect width="500" height="140" fill="#FFFFFF"/>
+  <g transform="translate(30,40)">
+    <rect x="0" y="0" width="76" height="54" rx="4" fill="#5B4B8A"/>
+    <path d="M0 0 L38 32 L76 0" fill="none" stroke="#3D3163" stroke-width="2"/>
+    <path d="M60 -6 L63 1 L70 2 L64 7 L66 14 L60 10 L54 14 L56 7 L50 2 L57 1 Z" fill="#E9C46A"/>
+  </g>
+  <text x="130" y="72" class="wordmark" font-size="44">InviteVibe</text>
+  <text x="132" y="96" class="tagline" font-size="12">DESIGN STUDIO</text>
+</svg>

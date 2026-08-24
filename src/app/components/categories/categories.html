@@ -1,0 +1,15 @@
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">What we design</span>
+      <h2>A category for every celebration</h2>
+      <p>Every design is built from scratch around your event — no cookie-cutter templates.</p>
+    </div>
+
+    <div class="categories__grid" #grid>
+      @for (category of categories; track category.id) {
+        <app-category-card [category]="category" />
+      }
+    </div>
+  </div>
+</section>

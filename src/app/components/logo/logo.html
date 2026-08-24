@@ -1,0 +1,36 @@
+@switch (layout()) {
+  @case ('icon') {
+    <svg class="logo logo--icon" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="InviteVibe">
+      <circle cx="90" cy="90" r="90" fill="#5B4B8A" />
+      <g transform="translate(60,69)">
+        <rect x="0" y="0" width="60" height="42" rx="4" fill="#F8F6FB" />
+        <path d="M0 0 L30 25 L60 0" fill="none" stroke="#5B4B8A" stroke-width="2" />
+      </g>
+      <path d="M115,53 L118,60 L125,61 L119,66 L121,73 L115,69 L109,73 L111,66 L105,61 L112,60 Z" fill="#E9C46A" />
+    </svg>
+  }
+  @case ('stacked') {
+    <svg class="logo logo--stacked" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="InviteVibe — Design Studio">
+      <g transform="translate(130,40)">
+        <g transform="translate(-38,0)">
+          <rect x="0" y="0" width="76" height="54" rx="4" fill="#5B4B8A" />
+          <path d="M0 0 L38 32 L76 0" fill="none" stroke="#3D3163" stroke-width="2" />
+          <path d="M60 -6 L63 1 L70 2 L64 7 L66 14 L60 10 L54 14 L56 7 L50 2 L57 1 Z" fill="#E9C46A" />
+        </g>
+        <text x="0" y="96" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="600" fill="#3D3163" font-size="38">InviteVibe</text>
+        <text x="0" y="118" text-anchor="middle" font-family="'Poppins', 'Helvetica Neue', sans-serif" font-weight="500" fill="#5B4B8A" letter-spacing="3" font-size="11">DESIGN STUDIO</text>
+      </g>
+    </svg>
+  }
+  @default {
+    <svg class="logo logo--horizontal" viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="InviteVibe — Design Studio">
+      <g transform="translate(30,40)">
+        <rect x="0" y="0" width="76" height="54" rx="4" fill="#5B4B8A" />
+        <path d="M0 0 L38 32 L76 0" fill="none" stroke="#3D3163" stroke-width="2" />
+        <path d="M60 -6 L63 1 L70 2 L64 7 L66 14 L60 10 L54 14 L56 7 L50 2 L57 1 Z" fill="#E9C46A" />
+      </g>
+      <text x="130" y="72" font-family="'Playfair Display', Georgia, serif" font-weight="600" fill="#3D3163" font-size="44">InviteVibe</text>
+      <text x="132" y="96" font-family="'Poppins', 'Helvetica Neue', sans-serif" font-weight="500" fill="#5B4B8A" letter-spacing="3" font-size="12">DESIGN STUDIO</text>
+    </svg>
+  }
+}
