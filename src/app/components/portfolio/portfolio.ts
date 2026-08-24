@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, computed, signal, viewChild } from '@angular/core';
-import { PortfolioCard } from '../portfolio-card/portfolio-card';
+import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, computed, signal, viewChild } from '@angular/core';
 import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { PORTFOLIO_ITEMS, PortfolioCategory } from '../../data/portfolio-items';
 import { GsapAnimation } from '../../services/gsap-animation';
@@ -11,11 +10,17 @@ interface FilterTab {
   label: string;
 }
 
+interface SwiperContainerEl extends HTMLElement {
+  initialize: () => void;
+  swiper?: { update: () => void; slideTo: (index: number) => void };
+}
+
 @Component({
-  imports: [PortfolioCard, FloralFlourish],
+  imports: [FloralFlourish],
   selector: 'app-portfolio',
   styleUrl: './portfolio.scss',
   templateUrl: './portfolio.html',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class Portfolio implements AfterViewInit {
   readonly tabs: FilterTab[] = [
@@ -35,29 +40,41 @@ export class Portfolio implements AfterViewInit {
     return filter === 'all' ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter((item) => item.category === filter);
   });
 
-  private readonly grid = viewChild.required<ElementRef<HTMLElement>>('grid');
+  private readonly section = viewChild.required<ElementRef<HTMLElement>>('section');
+  private readonly swiperEl = viewChild.required<ElementRef<SwiperContainerEl>>('swiperEl');
 
   constructor(private readonly anim: GsapAnimation) {}
 
   ngAfterViewInit(): void {
-    const cards = this.grid().nativeElement.querySelectorAll('.portfolio-card');
-    this.anim.revealGroupOnScroll(this.grid().nativeElement, cards, { stagger: 0.06 });
+    const el = this.swiperEl().nativeElement;
+
+    Object.assign(el, {
+      slidesPerView: 1.15,
+      centeredSlides: true,
+      spaceBetween: 16,
+      grabCursor: true,
+      speed: 500,
+      pagination: { clickable: true },
+      navigation: true,
+      keyboard: { enabled: true },
+      a11y: { enabled: true },
+      breakpoints: {
+        640: { slidesPerView: 2.1, spaceBetween: 20, centeredSlides: false },
+        1024: { slidesPerView: 3.2, spaceBetween: 28, centeredSlides: false },
+        1400: { slidesPerView: 4, spaceBetween: 32, centeredSlides: false },
+      },
+    });
+    el.initialize();
+
+    this.anim.revealOnScroll(this.section().nativeElement);
   }
 
   setFilter(id: FilterId): void {
     if (this.activeFilter() === id) return;
     this.activeFilter.set(id);
     requestAnimationFrame(() => {
-      const cards = this.grid().nativeElement.querySelectorAll('.portfolio-card');
-      if (this.anim.prefersReducedMotion) {
-        this.anim.gsap.set(cards, { opacity: 1, y: 0 });
-        return;
-      }
-      this.anim.gsap.fromTo(
-        cards,
-        { opacity: 0, y: 14 },
-        { opacity: 1, y: 0, duration: 0.4, stagger: 0.05, ease: 'power2.out' },
-      );
+      this.swiperEl().nativeElement.swiper?.slideTo(0);
+      this.swiperEl().nativeElement.swiper?.update();
     });
   }
 }

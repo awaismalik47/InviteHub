@@ -1,5 +1,6 @@
 .portfolio {
   background: var(--color-white);
+  overflow: hidden;
 }
 
 .portfolio__tabs {
@@ -36,21 +37,153 @@
   color: #fff;
 }
 
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+/* ---------- Swiper ---------- */
+.portfolio__swiper {
+  --swiper-theme-color: #{'#5B4B8A'};
+  --swiper-navigation-color: #5B4B8A;
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-color: #5B4B8A;
+  --swiper-pagination-bullet-inactive-color: #D8B4E2;
+  --swiper-pagination-bullet-inactive-opacity: 0.6;
+  padding: 0.25rem 1.25rem 3.5rem;
 }
 
-@media (min-width: 640px) {
-  .portfolio__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.4rem;
+.portfolio__swiper::part(button-prev),
+.portfolio__swiper::part(button-next) {
+  display: none;
+  background: var(--color-white);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: var(--shadow-card);
+}
+
+.portfolio__swiper::part(bullet-active) {
+  background: var(--color-accent);
+}
+
+.portfolio__slide {
+  width: auto;
+  height: auto;
+  opacity: 0.55;
+  transform: scale(0.93);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.portfolio__slide.swiper-slide-active,
+.portfolio__slide.swiper-slide-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- Reel card ---------- */
+.reel {
+  position: relative;
+  width: min(72vw, 240px);
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lift);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.reel--v1 {
+  background: linear-gradient(165deg, #6C5AA0 0%, #4A3B78 55%, #3D3163 100%);
+}
+.reel--v2 {
+  background: linear-gradient(165deg, #C99B3A 0%, #E9C46A 55%, #B98A2E 100%);
+}
+.reel--v3 {
+  background: linear-gradient(165deg, #9B7BC4 0%, #5B4B8A 55%, #3D3163 100%);
+}
+.reel--v4 {
+  background: linear-gradient(165deg, #D8B4E2 0%, #9B7BC4 55%, #5B4B8A 100%);
+}
+
+.reel__platform {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-primary-dark);
+}
+
+.reel__sparkle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 0.85;
+}
+
+.reel__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(20, 14, 40, 0.25);
+}
+
+.reel__caption {
+  position: relative;
+  padding: 1rem 1rem 1.15rem;
+  background: linear-gradient(0deg, rgba(20, 14, 40, 0.68) 0%, rgba(20, 14, 40, 0.15) 70%, transparent 100%);
+}
+
+.reel__tag {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.22);
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.reel__heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+  margin: 0 0 0.15rem;
+}
+
+.reel__sub {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .portfolio__swiper {
+    padding: 0.25rem 2rem 4rem;
   }
-}
 
-@media (min-width: 1024px) {
-  .portfolio__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .portfolio__swiper::part(button-prev),
+  .portfolio__swiper::part(button-next) {
+    display: flex;
+  }
+
+  .reel {
+    width: 100%;
+    max-width: 260px;
   }
 }

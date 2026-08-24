@@ -1,16 +1,19 @@
 export type PortfolioCategory = 'wedding' | 'engagement' | 'birthday' | 'baby-shower' | 'anniversary' | 'corporate';
+export type ReelPlatform = 'instagram' | 'tiktok' | 'facebook';
 
 export interface PortfolioItem {
   id: string;
   category: PortfolioCategory;
   categoryLabel: string;
   title: string;
-  /** Sample content shown on the mock card face — stands in for finished artwork. */
+  /** Sample content shown on the mock reel face — stands in for the finished video. */
   heading: string;
   subheading: string;
   detailLines: string[];
-  /** Palette variant so the placeholder cards read as a real, varied collection. */
+  /** Palette variant so the placeholder reels read as a real, varied collection. */
   variant: 1 | 2 | 3 | 4;
+  /** Where this reel is intended to be published once the real video is ready. */
+  platform: ReelPlatform;
 }
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
@@ -23,6 +26,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Request the pleasure of your company',
     detailLines: ['Saturday, 14th February 2026', 'The Grand Willow Estate, Lahore'],
     variant: 1,
+    platform: 'instagram',
   },
   {
     id: 'wed-02',
@@ -33,6 +37,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Walima Reception',
     detailLines: ['Sunday, 22nd March 2026', 'Rosewood Banquet Hall'],
     variant: 2,
+    platform: 'tiktok',
   },
   {
     id: 'wed-03',
@@ -43,6 +48,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Save the Date',
     detailLines: ['We’re getting married', '18.10.2026'],
     variant: 3,
+    platform: 'facebook',
   },
   {
     id: 'eng-01',
@@ -53,6 +59,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Engagement Ceremony',
     detailLines: ['Friday, 5th December 2026', 'The Orchid Room, Karachi'],
     variant: 2,
+    platform: 'instagram',
   },
   {
     id: 'eng-02',
@@ -63,6 +70,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Together with their families',
     detailLines: ['Thursday, 9th April 2026', 'Lakeview Terrace'],
     variant: 1,
+    platform: 'tiktok',
   },
   {
     id: 'bday-01',
@@ -73,6 +81,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Come celebrate with us',
     detailLines: ['Saturday, 7th June 2026, 4 PM', 'Sunshine Party Hall'],
     variant: 3,
+    platform: 'instagram',
   },
   {
     id: 'bday-02',
@@ -83,6 +92,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Join the celebration',
     detailLines: ['Saturday, 11th July 2026, 8 PM', 'The Rooftop, Islamabad'],
     variant: 4,
+    platform: 'facebook',
   },
   {
     id: 'baby-01',
@@ -93,6 +103,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Baby Shower for Mariam',
     detailLines: ['Sunday, 16th August 2026, 3 PM', 'The Garden Pavilion'],
     variant: 2,
+    platform: 'tiktok',
   },
   {
     id: 'baby-02',
@@ -103,6 +114,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'You’re invited to celebrate',
     detailLines: ['Friday, 2nd October 2026', 'Family Residence, Lahore'],
     variant: 3,
+    platform: 'instagram',
   },
   {
     id: 'ann-01',
@@ -113,6 +125,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Nasreen & Tariq',
     detailLines: ['Saturday, 23rd May 2026', 'The Palm Court'],
     variant: 1,
+    platform: 'facebook',
   },
   {
     id: 'ann-02',
@@ -123,6 +136,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Anum & Kashif',
     detailLines: ['Wednesday, 3rd September 2026', 'Home Celebration'],
     variant: 4,
+    platform: 'instagram',
   },
   {
     id: 'corp-01',
@@ -133,5 +147,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     subheading: 'Lumen Studio presents',
     detailLines: ['Tuesday, 17th November 2026, 6 PM', 'Skyline Conference Centre'],
     variant: 4,
+    platform: 'tiktok',
   },
 ];

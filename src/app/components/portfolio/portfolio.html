@@ -1,13 +1,13 @@
-<section class="section portfolio" id="portfolio">
+<section class="section portfolio" id="portfolio" #section>
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">Our work</span>
       <app-floral-flourish />
       <h2>A closer look at our designs</h2>
-      <p>Sample content shown below — every piece is fully customised to your names, dates and venue.</p>
+      <p>Reels of our finished designs — landing soon on Instagram, TikTok and Facebook.</p>
     </div>
 
-    <div class="portfolio__tabs" role="tablist" aria-label="Filter portfolio by category">
+    <div class="portfolio__tabs" role="tablist" aria-label="Filter reels by category">
       @for (tab of tabs; track tab.id) {
         <button
           type="button"
@@ -21,11 +21,54 @@
         </button>
       }
     </div>
-
-    <div class="portfolio__grid" #grid>
-      @for (item of filteredItems(); track item.id) {
-        <app-portfolio-card [item]="item" />
-      }
-    </div>
   </div>
+
+  <swiper-container #swiperEl init="false" class="portfolio__swiper">
+    @for (item of filteredItems(); track item.id) {
+      <swiper-slide class="portfolio__slide">
+        <article class="reel" [class]="'reel--v' + item.variant" [attr.aria-label]="'Video reel: ' + item.title">
+          <span class="reel__platform" [class]="'reel__platform--' + item.platform">
+            @switch (item.platform) {
+              @case ('instagram') {
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" />
+                  <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8" />
+                  <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+                </svg>
+              }
+              @case ('tiktok') {
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                  <path d="M14 3v10.6a2.9 2.9 0 1 1-2.4-2.86" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14 3c.4 2.2 2 3.8 4.2 4.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              }
+              @case ('facebook') {
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" aria-hidden="true">
+                  <path d="M15 8.5h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3.5h2V21h3.5v-6.5H17l.5-3.5h-3V9c0-.55.45-1 1.5-1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" />
+                </svg>
+              }
+            }
+          </span>
+
+          <span class="reel__play" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="#3D3163">
+              <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+            </svg>
+          </span>
+
+          <span class="reel__sparkle" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#E9C46A">
+              <path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" />
+            </svg>
+          </span>
+
+          <div class="reel__caption">
+            <span class="reel__tag">{{ item.categoryLabel }}</span>
+            <p class="reel__heading">{{ item.heading }}</p>
+            <p class="reel__sub">{{ item.subheading }}</p>
+          </div>
+        </article>
+      </swiper-slide>
+    }
+  </swiper-container>
 </section>
