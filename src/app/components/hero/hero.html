@@ -1,7 +1,55 @@
-<section class="hero" id="hero">
+<section class="hero" id="hero" #heroSection>
   <div class="hero__glow hero__glow--one" aria-hidden="true"></div>
   <div class="hero__glow hero__glow--two" aria-hidden="true"></div>
   <span class="hero__burst" #burst aria-hidden="true"></span>
+
+  <svg class="hero__floral hero__floral--bl" #floralBl viewBox="0 0 120 160" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 152 C24 128 34 100 52 78 C64 63 74 52 88 34" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-linecap="round" />
+    <ellipse cx="18" cy="132" rx="9" ry="4" transform="rotate(-52 18 132)" fill="rgba(255,255,255,0.28)" />
+    <ellipse cx="34" cy="106" rx="9.5" ry="4.2" transform="rotate(48 34 106)" fill="rgba(255,255,255,0.24)" />
+    <ellipse cx="47" cy="82" rx="9" ry="4" transform="rotate(-46 47 82)" fill="rgba(255,255,255,0.28)" />
+    <ellipse cx="62" cy="60" rx="8" ry="3.6" transform="rotate(50 62 60)" fill="rgba(255,255,255,0.22)" />
+    <g transform="translate(88,34)">
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(72)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(144)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(216)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(288)" />
+      <circle r="3.2" fill="#E9C46A" opacity="0.85" />
+    </g>
+  </svg>
+  <svg class="hero__floral hero__floral--tr" #floralTr viewBox="0 0 120 160" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 152 C24 128 34 100 52 78 C64 63 74 52 88 34" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-linecap="round" />
+    <ellipse cx="18" cy="132" rx="9" ry="4" transform="rotate(-52 18 132)" fill="rgba(255,255,255,0.28)" />
+    <ellipse cx="34" cy="106" rx="9.5" ry="4.2" transform="rotate(48 34 106)" fill="rgba(255,255,255,0.24)" />
+    <ellipse cx="47" cy="82" rx="9" ry="4" transform="rotate(-46 47 82)" fill="rgba(255,255,255,0.28)" />
+    <ellipse cx="62" cy="60" rx="8" ry="3.6" transform="rotate(50 62 60)" fill="rgba(255,255,255,0.22)" />
+    <g transform="translate(88,34)">
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(72)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(144)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(216)" />
+      <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(288)" />
+      <circle r="3.2" fill="#E9C46A" opacity="0.85" />
+    </g>
+  </svg>
+
+  <div class="hero__petals" #petals aria-hidden="true">
+    @for (petal of petalSet; track petal.id) {
+      <span class="hero__petal" [style.width.px]="petal.size" [style.height.px]="petal.size">
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(12,12)">
+            <ellipse cx="0" cy="-6" rx="3.2" ry="5" [attr.fill]="petal.color" />
+            <ellipse cx="0" cy="-6" rx="3.2" ry="5" [attr.fill]="petal.color" transform="rotate(72)" />
+            <ellipse cx="0" cy="-6" rx="3.2" ry="5" [attr.fill]="petal.color" transform="rotate(144)" />
+            <ellipse cx="0" cy="-6" rx="3.2" ry="5" [attr.fill]="petal.color" transform="rotate(216)" />
+            <ellipse cx="0" cy="-6" rx="3.2" ry="5" [attr.fill]="petal.color" transform="rotate(288)" />
+            <circle r="2" fill="#E9C46A" />
+          </g>
+        </svg>
+      </span>
+    }
+  </div>
 
   <div class="container hero__inner" #heroContent>
     <span class="eyebrow eyebrow--on-hero">Custom Invitation Design Studio</span>

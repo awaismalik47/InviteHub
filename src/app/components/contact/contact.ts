@@ -1,12 +1,13 @@
 import { AfterViewInit, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { GsapAnimation } from '../../services/gsap-animation';
 
 /** Replace with the studio's real WhatsApp Business number, digits only, country code first. */
 const WHATSAPP_NUMBER = '10000000000';
 
 @Component({
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, FloralFlourish],
   selector: 'app-contact',
   styleUrl: './contact.scss',
   templateUrl: './contact.html',

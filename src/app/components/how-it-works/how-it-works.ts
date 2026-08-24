@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
+import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { GsapAnimation } from '../../services/gsap-animation';
 
 interface Step {
@@ -8,7 +9,7 @@ interface Step {
 }
 
 @Component({
-  imports: [],
+  imports: [FloralFlourish],
   selector: 'app-how-it-works',
   styleUrl: './how-it-works.scss',
   templateUrl: './how-it-works.html',

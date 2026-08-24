@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
 import { PricingCard } from '../pricing-card/pricing-card';
+import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { PRICING_TIERS } from '../../data/pricing';
 import { GsapAnimation } from '../../services/gsap-animation';
 
 @Component({
-  imports: [PricingCard],
+  imports: [PricingCard, FloralFlourish],
   selector: 'app-pricing',
   styleUrl: './pricing.scss',
   templateUrl: './pricing.html',

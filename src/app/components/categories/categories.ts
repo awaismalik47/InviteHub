@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, viewChild } from '@angular/core';
 import { CategoryCard } from '../category-card/category-card';
+import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { CATEGORIES } from '../../data/categories';
 import { GsapAnimation } from '../../services/gsap-animation';
 
 @Component({
-  imports: [CategoryCard],
+  imports: [CategoryCard, FloralFlourish],
   selector: 'app-categories',
   styleUrl: './categories.scss',
   templateUrl: './categories.html',

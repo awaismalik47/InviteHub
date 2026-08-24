@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, computed, signal, viewChild } from '@angular/core';
 import { PortfolioCard } from '../portfolio-card/portfolio-card';
+import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { PORTFOLIO_ITEMS, PortfolioCategory } from '../../data/portfolio-items';
 import { GsapAnimation } from '../../services/gsap-animation';
 
@@ -11,7 +12,7 @@ interface FilterTab {
 }
 
 @Component({
-  imports: [PortfolioCard],
+  imports: [PortfolioCard, FloralFlourish],
   selector: 'app-portfolio',
   styleUrl: './portfolio.scss',
   templateUrl: './portfolio.html',
