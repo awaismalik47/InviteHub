@@ -93,20 +93,32 @@
   }
 }
 
-/* ---------- Cursor-trailing petals (desktop only) ---------- */
-.hero__petals {
+/* ---------- Orbiting flowers around the cursor (desktop only) ---------- */
+.hero__orbit {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
   z-index: 6;
   pointer-events: none;
 }
 
-.hero__petal {
+.hero__orbit-flower {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
+  pointer-events: auto;
   will-change: transform;
+
+  img,
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 /* ---------- Envelope cover: a real V-shaped flap that opens over the hero ---------- */

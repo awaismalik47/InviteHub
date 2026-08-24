@@ -6,6 +6,8 @@ interface Petal {
   id: number;
   color: string;
   size: number;
+  /** Once a real flower photo is available, set this and it renders instead of the line-art fallback. */
+  image?: string;
 }
 
 @Component({
@@ -22,7 +24,7 @@ export class Hero implements AfterViewInit, OnDestroy {
   private readonly heroContent = viewChild.required<ElementRef<HTMLElement>>('heroContent');
   private readonly floralBl = viewChild.required<ElementRef<HTMLElement>>('floralBl');
   private readonly floralTr = viewChild.required<ElementRef<HTMLElement>>('floralTr');
-  private readonly petalsContainer = viewChild.required<ElementRef<HTMLElement>>('petals');
+  private readonly orbitContainer = viewChild.required<ElementRef<HTMLElement>>('orbit');
 
   readonly petalSet: Petal[] = [
     { id: 1, color: '#FFFFFF', size: 16 },
@@ -34,7 +36,7 @@ export class Hero implements AfterViewInit, OnDestroy {
   ];
 
   private timeline?: gsap.core.Timeline;
-  private petalCleanup?: () => void;
+  private orbitCleanup?: () => void;
 
   constructor(private readonly anim: GsapAnimation) {}
 
@@ -74,25 +76,41 @@ export class Hero implements AfterViewInit, OnDestroy {
 
     const supportsHover = typeof window !== 'undefined' && window.matchMedia?.('(hover: hover) and (pointer: fine)').matches;
     if (supportsHover && !isMobile) {
-      this.setupPetalTrail();
+      this.setupFlowerOrbit();
     }
   }
 
-  /** A small swarm of flower petals that trails the cursor with per-petal
-   * lag and a gentle continuous spin — a desktop-only delight moment. */
-  private setupPetalTrail(): void {
+  /** A ring of flowers that follows the cursor and slowly revolves around it —
+   * hovering any single flower freezes the whole ring in place. Desktop only. */
+  private setupFlowerOrbit(): void {
     const heroEl = this.heroSection().nativeElement;
-    const petalEls = Array.from(this.petalsContainer().nativeElement.querySelectorAll<HTMLElement>('.hero__petal'));
-    if (!petalEls.length) return;
+    const orbitEl = this.orbitContainer().nativeElement;
+    const flowerEls = Array.from(orbitEl.querySelectorAll<HTMLElement>('.hero__orbit-flower'));
+    if (!flowerEls.length) return;
 
-    const setters = petalEls.map((el, i) => ({
-      x: gsap.quickTo(el, 'x', { duration: 0.35 + i * 0.09, ease: 'power3.out' }),
-      y: gsap.quickTo(el, 'y', { duration: 0.35 + i * 0.09, ease: 'power3.out' }),
-    }));
+    const radius = 52;
+    const orbitDuration = 22;
 
-    const spins = petalEls.map((el) =>
-      gsap.to(el, { rotation: 360, duration: gsap.utils.random(4, 8), repeat: -1, ease: 'none' }),
-    );
+    // Each flower gets a fixed local offset around the ring's centre; the ring
+    // itself spins continuously while each flower counter-spins by the same
+    // amount, so the flowers travel in a circle without themselves rotating.
+    const spins = flowerEls.map((el, i) => {
+      const angle = (360 / flowerEls.length) * i;
+      const rad = (angle * Math.PI) / 180;
+      const size = el.offsetWidth || 18;
+      gsap.set(el, {
+        x: Math.cos(rad) * radius - size / 2,
+        y: Math.sin(rad) * radius - size / 2,
+      });
+      return gsap.to(el, { rotation: -360, duration: orbitDuration, repeat: -1, ease: 'none' });
+    });
+
+    const ringSpin = gsap.to(orbitEl, { rotation: 360, duration: orbitDuration, repeat: -1, ease: 'none' });
+
+    const follow = {
+      x: gsap.quickTo(orbitEl, 'x', { duration: 0.45, ease: 'power3.out' }),
+      y: gsap.quickTo(orbitEl, 'y', { duration: 0.45, ease: 'power3.out' }),
+    };
 
     let hasPositioned = false;
 
@@ -102,34 +120,51 @@ export class Hero implements AfterViewInit, OnDestroy {
       const y = event.clientY - rect.top;
 
       if (!hasPositioned) {
-        gsap.set(petalEls, { x, y });
-        gsap.to(petalEls, { opacity: 0.8, duration: 0.4, stagger: 0.04 });
+        gsap.set(orbitEl, { x, y });
+        gsap.to(flowerEls, { opacity: 0.9, duration: 0.4, stagger: 0.04 });
         hasPositioned = true;
       }
-      setters.forEach((s) => {
-        s.x(x);
-        s.y(y);
-      });
+      follow.x(x);
+      follow.y(y);
     };
 
     const onLeave = () => {
       hasPositioned = false;
-      gsap.to(petalEls, { opacity: 0, duration: 0.4 });
+      gsap.to(flowerEls, { opacity: 0, duration: 0.4 });
+    };
+
+    const pauseOrbit = () => {
+      ringSpin.pause();
+      spins.forEach((s) => s.pause());
+    };
+
+    const resumeOrbit = () => {
+      ringSpin.play();
+      spins.forEach((s) => s.play());
     };
 
     heroEl.addEventListener('mousemove', onMove);
     heroEl.addEventListener('mouseleave', onLeave);
+    flowerEls.forEach((el) => {
+      el.addEventListener('mouseenter', pauseOrbit);
+      el.addEventListener('mouseleave', resumeOrbit);
+    });
 
-    this.petalCleanup = () => {
+    this.orbitCleanup = () => {
       heroEl.removeEventListener('mousemove', onMove);
       heroEl.removeEventListener('mouseleave', onLeave);
+      flowerEls.forEach((el) => {
+        el.removeEventListener('mouseenter', pauseOrbit);
+        el.removeEventListener('mouseleave', resumeOrbit);
+      });
+      ringSpin.kill();
       spins.forEach((s) => s.kill());
     };
   }
 
   ngOnDestroy(): void {
     this.timeline?.kill();
-    this.petalCleanup?.();
+    this.orbitCleanup?.();
   }
 
   scrollTo(id: string): void {
