@@ -65,11 +65,13 @@
   text-align: center;
   background: linear-gradient(160deg, #f2c9a0 0%, #dd7d92 42%, #3d251e 100%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: scale(0.9);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .scratch-card__message--visible {
   opacity: 1;
+  transform: scale(1);
 }
 
 .scratch-card__message-label {
@@ -99,34 +101,3 @@
   touch-action: none;
 }
 
-.scratch-card__burst {
-  position: fixed;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 999;
-}
-
-.scratch-card__petal {
-  position: absolute;
-  will-change: transform, opacity;
-}
-
-.scratch-card__glow {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 230, 184, 0.85) 0%, rgba(221, 125, 146, 0.35) 45%, rgba(221, 125, 146, 0) 75%);
-  will-change: transform, opacity;
-}
-
-.scratch-card__sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff2d6;
-  box-shadow: 0 0 8px 2px rgba(255, 242, 214, 0.9);
-  will-change: transform, opacity;
-}
