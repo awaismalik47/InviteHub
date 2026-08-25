@@ -40,6 +40,8 @@ const CONFIG: WeddingConfig = {
     'invites/asad-ruqia-r4n8w2sq/gallery/wedding_inv_couple.png',
     'invites/asad-ruqia-r4n8w2sq/gallery/wedding_inv_couple_1.png',
     'invites/asad-ruqia-r4n8w2sq/gallery/wedding_inv_couple_2.png',
+    'invites/asad-ruqia-r4n8w2sq/gallery/wedding-inv-couple-4.png',
+    'invites/asad-ruqia-r4n8w2sq/gallery/wedding-inv-couple-5.png',
   ],
   dressCode: {
     women: 'Elegant formal attire in pastel or jewel tones',
