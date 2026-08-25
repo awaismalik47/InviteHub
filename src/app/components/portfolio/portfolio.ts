@@ -14,7 +14,7 @@ interface SwiperContainerEl extends HTMLElement {
   initialize: () => void;
   swiper?: {
     update: () => void;
-    slideToLoop: (index: number) => void;
+    slideTo: (index: number) => void;
     slidePrev: () => void;
     slideNext: () => void;
   };
@@ -54,9 +54,13 @@ export class Portfolio implements AfterViewInit {
     const el = this.swiperEl().nativeElement;
 
     Object.assign(el, {
+      // loop mode is deliberately not used here: combined with
+      // slidesPerView:'auto' (needed for the variable-width tiered cards),
+      // Swiper can't reliably compute how many clone slides to generate —
+      // it runs out after the first pass and the track silently stops
+      // translating on further clicks/swipes. A real bug, not a config typo.
       slidesPerView: 'auto',
       centeredSlides: true,
-      loop: true,
       spaceBetween: 20,
       grabCursor: true,
       speed: 500,
@@ -77,7 +81,7 @@ export class Portfolio implements AfterViewInit {
     if (this.activeFilter() === id) return;
     this.activeFilter.set(id);
     requestAnimationFrame(() => {
-      this.swiperEl().nativeElement.swiper?.slideToLoop(0);
+      this.swiperEl().nativeElement.swiper?.slideTo(0);
       this.swiperEl().nativeElement.swiper?.update();
     });
   }
