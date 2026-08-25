@@ -97,17 +97,15 @@
 }
 
 .scratch-card__burst {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  overflow: visible;
+  overflow: hidden;
   pointer-events: none;
-  z-index: 2;
+  z-index: 999;
 }
 
 .scratch-card__petal {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -9px 0 0 -9px;
+  top: 0;
   will-change: transform, opacity;
 }

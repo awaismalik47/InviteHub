@@ -128,18 +128,24 @@ export class ScratchCard implements AfterViewInit {
     }
   }
 
-  /** A shower of flower petals falling from above once the date is revealed. */
+  /** A full-screen party shower of flower petals falling top to bottom once the date is revealed. */
   private throwFlowers(): void {
     if (this.anim.prefersReducedMotion) return;
     const container = this.burst().nativeElement;
-    const count = 22;
+    const count = 46;
+    const viewportW = window.innerWidth;
+    const viewportH = window.innerHeight;
 
     for (let i = 0; i < count; i++) {
       const color = PETAL_COLORS[i % PETAL_COLORS.length];
+      const size = 14 + Math.random() * 14;
       const petal = document.createElement('span');
       petal.className = 'scratch-card__petal';
+      petal.style.left = `${Math.random() * viewportW}px`;
+      petal.style.width = `${size}px`;
+      petal.style.height = `${size}px`;
       petal.innerHTML = `
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(12,12)">
             <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" />
             <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(72)" />
@@ -151,28 +157,25 @@ export class ScratchCard implements AfterViewInit {
         </svg>`;
       container.appendChild(petal);
 
-      const startX = (Math.random() - 0.5) * 260;
-      const startY = -140 - Math.random() * 60;
-      const drift = (Math.random() - 0.5) * 90;
-      const fallY = 260 + Math.random() * 60;
-      const rotate = (Math.random() - 0.5) * 360;
-      const duration = 1.6 + Math.random() * 0.9;
-      const delay = Math.random() * 0.6;
+      const drift = (Math.random() - 0.5) * 140;
+      const spins = (Math.random() < 0.5 ? -1 : 1) * (240 + Math.random() * 360);
+      const duration = 2.4 + Math.random() * 2;
+      const delay = Math.random() * 1.4;
 
-      gsap.set(petal, { x: startX, y: startY, opacity: 0, scale: 0.6 + Math.random() * 0.4 });
-      gsap.to(petal, { opacity: 1, duration: 0.3, delay, ease: 'power1.out' });
+      gsap.set(petal, { y: -60, x: 0, rotate: Math.random() * 360, opacity: 0 });
+      gsap.to(petal, { opacity: 1, duration: 0.35, delay, ease: 'power1.out' });
       gsap.to(petal, {
-        x: startX + drift,
-        y: fallY,
-        rotate,
+        y: viewportH + 60,
+        x: drift,
+        rotate: `+=${spins}`,
         duration,
         delay,
-        ease: 'power1.in',
+        ease: 'none',
       });
       gsap.to(petal, {
         opacity: 0,
-        duration: 0.4,
-        delay: delay + duration - 0.35,
+        duration: 0.5,
+        delay: delay + duration - 0.5,
         ease: 'power1.in',
         onComplete: () => petal.remove(),
       });
