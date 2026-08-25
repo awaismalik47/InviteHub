@@ -44,14 +44,7 @@
 
 .portfolio__swiper {
   --swiper-theme-color: #{'#5B4B8A'};
-  --swiper-pagination-color: #5B4B8A;
-  --swiper-pagination-bullet-inactive-color: #D8B4E2;
-  --swiper-pagination-bullet-inactive-opacity: 0.6;
-  padding: 0.25rem 1.25rem 3.5rem;
-}
-
-.portfolio__swiper::part(bullet-active) {
-  background: var(--color-accent);
+  padding: 0.25rem 1.25rem 1.5rem;
 }
 
 .portfolio__swiper::part(wrapper) {
@@ -97,11 +90,17 @@
   right: 0.75rem;
 }
 
+/* Pinned to the height of the tallest (active) tier so the row's own box
+   never shrinks/grows as individual slides cross-fade between tiers —
+   without this, the two async CSS transitions (.reel height, .reel-meta__name
+   font-size) briefly dip the container's height on every click, visibly
+   jolting everything below the slider up and down. */
 .portfolio__slide {
-  height: auto;
+  height: 470px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 /* ---------- Reel card: a tiered "coverflow" depth effect where the active
@@ -233,11 +232,15 @@
 
 @media (min-width: 900px) {
   .portfolio__swiper {
-    padding: 0.25rem 4.5rem 4rem;
+    padding: 0.25rem 4.5rem 2rem;
   }
 
   .portfolio__nav {
     display: flex;
+  }
+
+  .portfolio__slide {
+    height: 510px;
   }
 
   .swiper-slide-prev .reel,

@@ -86,7 +86,6 @@ export class Portfolio implements AfterViewInit {
       spaceBetween: 20,
       grabCursor: true,
       speed: 500,
-      pagination: { clickable: true },
       keyboard: { enabled: true },
       a11y: { enabled: true },
       breakpoints: {
