@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist/InviteVibe/browser"
+
+[build.environment]
+  # Angular CLI 22 requires Node >=22.22.3 — pin it so Netlify's build
+  # doesn't silently use an older default and fail.
+  NODE_VERSION = "22.22.3"
+
+# Angular is a client-side-routed SPA — any path that isn't a real file
+# (e.g. /invite/asad-ruqia-r4n8w2sq) must still be served index.html so the
+# Angular Router can take over, otherwise Netlify 404s on direct loads/refreshes.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
