@@ -1,18 +1,24 @@
 import { AfterViewInit, Component, ElementRef, input, signal, viewChild } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { gsap } from 'gsap';
+import { WeddingConfig } from '../../../data/wedding-config';
 import { GsapAnimation } from '../../../services/gsap-animation';
 
+const PETAL_COLORS = ['#deaeb2', '#fff2d6', '#dd7d92'];
+
 @Component({
-  imports: [],
+  imports: [DatePipe],
   selector: 'app-scratch-card',
   styleUrl: './scratch-card.scss',
   templateUrl: './scratch-card.html',
 })
 export class ScratchCard implements AfterViewInit {
-  message = input('YOU ARE SPECIAL TO US ❤️');
+  config = input.required<WeddingConfig>();
 
   private readonly heading = viewChild.required<ElementRef<HTMLElement>>('heading');
   private readonly canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('canvas');
   private readonly wrap = viewChild.required<ElementRef<HTMLElement>>('wrap');
+  private readonly burst = viewChild.required<ElementRef<HTMLElement>>('burst');
 
   readonly revealed = signal(false);
 
@@ -49,30 +55,30 @@ export class ScratchCard implements AfterViewInit {
       canvas.width * 0.05,
       canvas.width * 0.5,
       canvas.height * 0.5,
-      canvas.width * 0.75,
+      canvas.width * 0.8,
     );
-    gradient.addColorStop(0, '#f2ddc5');
-    gradient.addColorStop(0.55, '#deaeb2');
-    gradient.addColorStop(1, '#845b2b');
+    gradient.addColorStop(0, '#ffe6b8');
+    gradient.addColorStop(0.5, '#dd7d92');
+    gradient.addColorStop(1, '#5d362f');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // A scattering of light dots to read as glitter on the scratch surface.
-    for (let i = 0; i < 140; i++) {
+    for (let i = 0; i < 160; i++) {
       const x = Math.random() * canvas.width;
       const y = Math.random() * canvas.height;
-      const r = Math.random() * 1.4 + 0.3;
-      ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.6 + 0.15})`;
+      const r = Math.random() * 1.5 + 0.3;
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.7 + 0.25})`;
       ctx.beginPath();
       ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
-    ctx.font = '600 13px sans-serif';
+    ctx.fillStyle = 'rgba(93, 54, 47, 0.9)';
+    ctx.font = '700 13px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('Scratch here', canvas.width / 2, canvas.height / 2);
+    ctx.fillText('SCRATCH HERE', canvas.width / 2, canvas.height / 2);
   }
 
   onPointerDown(event: PointerEvent): void {
@@ -118,6 +124,49 @@ export class ScratchCard implements AfterViewInit {
 
     if (total > 0 && transparent / total > 0.45) {
       this.revealed.set(true);
+      this.throwFlowers();
+    }
+  }
+
+  /** A celebratory burst of flower petals flying outward from the heart once the date is revealed. */
+  private throwFlowers(): void {
+    if (this.anim.prefersReducedMotion) return;
+    const container = this.burst().nativeElement;
+    const count = 16;
+
+    for (let i = 0; i < count; i++) {
+      const color = PETAL_COLORS[i % PETAL_COLORS.length];
+      const petal = document.createElement('span');
+      petal.className = 'scratch-card__petal';
+      petal.innerHTML = `
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(12,12)">
+            <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" />
+            <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(72)" />
+            <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(144)" />
+            <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(216)" />
+            <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(288)" />
+            <circle r="2.6" fill="#845b2b" />
+          </g>
+        </svg>`;
+      container.appendChild(petal);
+
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 70 + Math.random() * 100;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance - 50;
+      const rotate = (Math.random() - 0.5) * 420;
+      const duration = 0.9 + Math.random() * 0.5;
+
+      gsap.set(petal, { opacity: 1, scale: 0.5 });
+      gsap.to(petal, { x, y, rotate, scale: 1, duration, ease: 'power2.out' });
+      gsap.to(petal, {
+        opacity: 0,
+        duration: 0.5,
+        delay: duration - 0.35,
+        ease: 'power1.in',
+        onComplete: () => petal.remove(),
+      });
     }
   }
 }

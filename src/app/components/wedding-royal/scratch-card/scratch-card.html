@@ -9,18 +9,24 @@
       </span>
     </div>
 
-    <div class="scratch-card__wrap" #wrap>
-      <p class="scratch-card__message" [class.scratch-card__message--visible]="revealed()">{{ message() }}</p>
-      @if (!revealed()) {
-        <canvas
-          #canvas
-          class="scratch-card__canvas"
-          (pointerdown)="onPointerDown($event)"
-          (pointermove)="onPointerMove($event)"
-          (pointerup)="onPointerUp()"
-          (pointerleave)="onPointerUp()"
-        ></canvas>
-      }
+    <div class="scratch-card__stage" #wrap>
+      <div class="scratch-card__wrap">
+        <p class="scratch-card__message" [class.scratch-card__message--visible]="revealed()">
+          <span class="scratch-card__message-label">Save The Date</span>
+          <span class="scratch-card__message-date">{{ config().weddingDate | date: 'd MMMM y' }}</span>
+        </p>
+        @if (!revealed()) {
+          <canvas
+            #canvas
+            class="scratch-card__canvas"
+            (pointerdown)="onPointerDown($event)"
+            (pointermove)="onPointerMove($event)"
+            (pointerup)="onPointerUp()"
+            (pointerleave)="onPointerUp()"
+          ></canvas>
+        }
+      </div>
+      <div class="scratch-card__burst" #burst aria-hidden="true"></div>
     </div>
   </div>
 </section>
