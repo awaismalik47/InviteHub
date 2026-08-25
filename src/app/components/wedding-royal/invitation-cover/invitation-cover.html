@@ -17,28 +17,34 @@
 
   @if (!playing()) {
     <button type="button" class="invitation-cover__play" aria-label="Play video">
+      <span class="invitation-cover__play-glow" aria-hidden="true"></span>
+
       <span class="invitation-cover__play-visual">
         <span class="invitation-cover__play-ring">
           @for (i of [0, 1, 2, 3, 4, 5]; track i) {
-            <span class="invitation-cover__play-flower" [style.transform]="'rotate(' + (i * 60) + 'deg) translateY(-38px) rotate(' + (-i * 60) + 'deg)'">
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <span class="invitation-cover__play-flower" [style.transform]="'rotate(' + (i * 60) + 'deg) translateY(-48px) rotate(' + (-i * 60) + 'deg)'">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g transform="translate(12,12)">
-                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" />
-                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(72)" />
-                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(144)" />
-                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(216)" />
-                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(288)" />
-                  <circle r="2.6" fill="#845b2b" />
+                  <ellipse cx="0" cy="-6" rx="3.6" ry="5.8" fill="#deaeb2" />
+                  <ellipse cx="0" cy="-6" rx="3.6" ry="5.8" fill="#deaeb2" transform="rotate(72)" />
+                  <ellipse cx="0" cy="-6" rx="3.6" ry="5.8" fill="#deaeb2" transform="rotate(144)" />
+                  <ellipse cx="0" cy="-6" rx="3.6" ry="5.8" fill="#deaeb2" transform="rotate(216)" />
+                  <ellipse cx="0" cy="-6" rx="3.6" ry="5.8" fill="#deaeb2" transform="rotate(288)" />
+                  <circle r="2.8" fill="#fff2d6" />
                 </g>
               </svg>
             </span>
           }
         </span>
         <span class="invitation-cover__play-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="#fff" /></svg>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="#fff2d6" /></svg>
         </span>
       </span>
-      <span class="invitation-cover__play-label">Tap to Play</span>
+
+      <span class="invitation-cover__play-label">
+        Tap to Play
+        <span class="invitation-cover__play-underline" aria-hidden="true"></span>
+      </span>
     </button>
   }
 

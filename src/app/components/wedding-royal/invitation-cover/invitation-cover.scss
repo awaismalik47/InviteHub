@@ -26,31 +26,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.35rem;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
 }
 
+.invitation-cover__play-glow {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(132, 91, 43, 0.45) 0%, rgba(132, 91, 43, 0) 70%);
+  animation: glow-breathe 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.92); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
 .invitation-cover__play-visual {
   position: relative;
-  width: 92px;
-  height: 92px;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
 }
 
 .invitation-cover__play-ring {
   position: absolute;
   inset: 0;
-  animation: ring-spin 16s linear infinite;
+  animation: ring-spin 18s linear infinite;
 }
 
 .invitation-cover__play-flower {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin: -8px 0 0 -8px;
-  animation: flower-pulse 2s ease-in-out infinite;
+  margin: -10px 0 0 -10px;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35));
+  animation: flower-pulse 2.4s ease-in-out infinite;
 }
 
 @keyframes ring-spin {
@@ -59,8 +79,8 @@
 }
 
 @keyframes flower-pulse {
-  0%, 100% { opacity: 0.75; }
-  50% { opacity: 1; }
+  0%, 100% { opacity: 0.8; transform: scale(0.94); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
 .invitation-cover__play-icon {
@@ -72,26 +92,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(2px);
-  animation: play-pulse 2s ease-in-out infinite;
+  background: linear-gradient(155deg, #a9723f 0%, #5d362f 100%);
+  border: 1.5px solid rgba(255, 242, 214, 0.55);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 242, 214, 0.12);
+  animation: play-pulse 2.4s ease-in-out infinite;
+
+  svg {
+    margin-left: 3px;
+  }
 }
 
 @keyframes play-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.35); }
-  50% { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0); }
+  0%, 100% { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), 0 0 0 0 rgba(255, 242, 214, 0.4); }
+  50% { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), 0 0 0 12px rgba(255, 242, 214, 0); }
 }
 
 .invitation-cover__play-label {
-  font-family: var(--font-body, inherit);
-  font-size: 0.8rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-script, inherit);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.02em;
+  color: #fff2d6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+}
+
+.invitation-cover__play-underline {
+  display: block;
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #deaeb2, transparent);
 }
 
 .invitation-cover__scroll-cue {
@@ -121,6 +159,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .invitation-cover__play-glow,
   .invitation-cover__play-ring,
   .invitation-cover__play-flower,
   .invitation-cover__play-icon,
