@@ -4,16 +4,19 @@
 
   /* Scoped royal theme tokens — deliberately not on global :root so this
      palette never bleeds into the marketing site's own tokens.
-     Palette lifted from the client's own video: deep brown, bronze, dusty
-     rose, cream. */
-  --color-primary: #4a2a24;
-  --color-secondary: #deaeb2;
-  --color-background: #fff2d6;
-  --color-surface: #fffaf0;
-  --color-text: #3d2620;
-  --color-muted: #7a5548;
-  --color-gold: #845b2b;
-  --color-alt-bg: #f2e2c9;
+     Refined from the client's video (deep brown, bronze, dusty rose, cream)
+     into a proper champagne-gold + ivory + mahogany + blush wedding palette —
+     same family of colors, brighter/richer so it reads as premium rather
+     than muddy, with clearer contrast between text, muted text, and the
+     alternating section backgrounds. */
+  --color-primary: #6b3d31;
+  --color-secondary: #e3b3ae;
+  --color-background: #fdf6ea;
+  --color-surface: #fffdf8;
+  --color-text: #45261e;
+  --color-muted: #8a6a58;
+  --color-gold: #c79a4b;
+  --color-alt-bg: #f7e8d4;
   --font-heading: 'Cinzel', 'Playfair Display', serif;
   --font-body: 'Cormorant Garamond', 'Georgia', serif;
   --font-script: 'Dancing Script', cursive;
@@ -26,7 +29,7 @@
 :host ::ng-deep .eyebrow {
   font-family: var(--font-body);
   color: var(--color-primary);
-  background: rgba(132, 91, 43, 0.14);
+  background: rgba(199, 154, 75, 0.16);
 }
 
 :host ::ng-deep h1,
@@ -37,7 +40,7 @@
 
 .wedding-royal__message {
   padding: 4.5rem 0;
-  background: linear-gradient(180deg, #3a2420 0%, #5d362f 45%, #deaeb2 100%);
+  background: linear-gradient(180deg, #3d251e 0%, #6b3d31 45%, #e3b3ae 100%);
 }
 
 .wedding-royal__message-inner {
@@ -72,6 +75,6 @@
 }
 
 .wedding-royal__inline-heart {
-  color: #deaeb2;
+  color: #e3b3ae;
   vertical-align: -2px;
 }

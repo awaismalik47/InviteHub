@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 import { WeddingConfig } from '../../../data/wedding-config';
 import { GsapAnimation } from '../../../services/gsap-animation';
 
-const PETAL_COLORS = ['#deaeb2', '#fff2d6', '#dd7d92', '#f2c9b0'];
+const PETAL_COLORS = ['#e3b3ae', '#fff2d6', '#dd7d92', '#f2c9b0'];
 
 const FLOWER_SVG = (color: string) => `
   <svg viewBox="0 0 24 24" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@ const FLOWER_SVG = (color: string) => `
       <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(144)" />
       <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(216)" />
       <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="${color}" transform="rotate(288)" />
-      <circle r="2.6" fill="#845b2b" />
+      <circle r="2.6" fill="#c79a4b" />
     </g>
   </svg>`;
 
@@ -76,7 +76,7 @@ export class ScratchCard implements AfterViewInit {
     );
     gradient.addColorStop(0, '#ffe6b8');
     gradient.addColorStop(0.5, '#dd7d92');
-    gradient.addColorStop(1, '#5d362f');
+    gradient.addColorStop(1, '#3d251e');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -91,7 +91,7 @@ export class ScratchCard implements AfterViewInit {
       ctx.fill();
     }
 
-    ctx.fillStyle = 'rgba(93, 54, 47, 0.9)';
+    ctx.fillStyle = 'rgba(107, 61, 49, 0.9)';
     ctx.font = '700 13px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';

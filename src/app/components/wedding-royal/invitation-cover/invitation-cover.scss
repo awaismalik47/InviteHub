@@ -41,7 +41,7 @@
   height: 220px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(132, 91, 43, 0.45) 0%, rgba(132, 91, 43, 0) 70%);
+  background: radial-gradient(circle, rgba(199, 154, 75, 0.45) 0%, rgba(199, 154, 75, 0) 70%);
   animation: glow-breathe 3s ease-in-out infinite;
   pointer-events: none;
 }
@@ -95,7 +95,7 @@
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  background: linear-gradient(155deg, #a9723f 0%, #5d362f 100%);
+  background: linear-gradient(155deg, #a9723f 0%, #3d251e 100%);
   border: 1.5px solid rgba(255, 242, 214, 0.55);
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(255, 242, 214, 0.12);
   animation: play-pulse 2.4s ease-in-out infinite;
@@ -129,7 +129,7 @@
   display: block;
   width: 46px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #deaeb2, transparent);
+  background: linear-gradient(90deg, transparent, #e3b3ae, transparent);
 }
 
 .invitation-cover__scroll-cue {

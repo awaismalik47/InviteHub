@@ -26,13 +26,13 @@
   font-size: 0.92rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(93, 54, 47, 0.3);
+  box-shadow: 0 10px 24px rgba(107, 61, 49, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .calendar-buttons__cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(93, 54, 47, 0.35);
+  box-shadow: 0 14px 30px rgba(107, 61, 49, 0.35);
 }
 
 .calendar-buttons__ics {
