@@ -128,11 +128,11 @@ export class ScratchCard implements AfterViewInit {
     }
   }
 
-  /** A celebratory burst of flower petals flying outward from the heart once the date is revealed. */
+  /** A shower of flower petals falling from above once the date is revealed. */
   private throwFlowers(): void {
     if (this.anim.prefersReducedMotion) return;
     const container = this.burst().nativeElement;
-    const count = 16;
+    const count = 22;
 
     for (let i = 0; i < count; i++) {
       const color = PETAL_COLORS[i % PETAL_COLORS.length];
@@ -151,19 +151,28 @@ export class ScratchCard implements AfterViewInit {
         </svg>`;
       container.appendChild(petal);
 
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 70 + Math.random() * 100;
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * distance - 50;
-      const rotate = (Math.random() - 0.5) * 420;
-      const duration = 0.9 + Math.random() * 0.5;
+      const startX = (Math.random() - 0.5) * 260;
+      const startY = -140 - Math.random() * 60;
+      const drift = (Math.random() - 0.5) * 90;
+      const fallY = 260 + Math.random() * 60;
+      const rotate = (Math.random() - 0.5) * 360;
+      const duration = 1.6 + Math.random() * 0.9;
+      const delay = Math.random() * 0.6;
 
-      gsap.set(petal, { opacity: 1, scale: 0.5 });
-      gsap.to(petal, { x, y, rotate, scale: 1, duration, ease: 'power2.out' });
+      gsap.set(petal, { x: startX, y: startY, opacity: 0, scale: 0.6 + Math.random() * 0.4 });
+      gsap.to(petal, { opacity: 1, duration: 0.3, delay, ease: 'power1.out' });
+      gsap.to(petal, {
+        x: startX + drift,
+        y: fallY,
+        rotate,
+        duration,
+        delay,
+        ease: 'power1.in',
+      });
       gsap.to(petal, {
         opacity: 0,
-        duration: 0.5,
-        delay: duration - 0.35,
+        duration: 0.4,
+        delay: delay + duration - 0.35,
         ease: 'power1.in',
         onComplete: () => petal.remove(),
       });
