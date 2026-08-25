@@ -36,8 +36,8 @@
 }
 
 .gallery__slide {
-  width: min(78vw, 420px);
-  aspect-ratio: 4 / 3;
+  width: min(62vw, 300px);
+  aspect-ratio: 3 / 4;
   border-radius: var(--radius-lg, 24px);
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(107, 61, 49, 0.22);
@@ -71,6 +71,6 @@
 
 @media (min-width: 640px) {
   .gallery__slide {
-    width: 380px;
+    width: 280px;
   }
 }
