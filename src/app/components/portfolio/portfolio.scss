@@ -98,7 +98,6 @@
 }
 
 .portfolio__slide {
-  width: 168px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -110,7 +109,7 @@
    everything else at the base tier. ---------- */
 .reel {
   position: relative;
-  width: 168px;
+  width: 100%;
   height: 240px;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -239,14 +238,6 @@
 
   .portfolio__nav {
     display: flex;
-  }
-
-  .portfolio__slide {
-    width: 190px;
-  }
-
-  .reel {
-    width: 190px;
   }
 
   .swiper-slide-prev .reel,

@@ -36,7 +36,8 @@
     </button>
 
     <swiper-container #swiperEl init="false" class="portfolio__swiper">
-    @for (item of filteredItems(); track item.id) {
+    @for (slide of slideSet().slides; track slide.key) {
+      @let item = slide.item;
       <swiper-slide class="portfolio__slide">
         <article class="reel" [class]="'reel--v' + item.variant" [attr.aria-label]="'Video reel: ' + item.title">
           <span class="reel__platform" [class]="'reel__platform--' + item.platform">
