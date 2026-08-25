@@ -11,7 +11,7 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     id: 'basic',
     name: 'Basic',
-    startingFrom: 'Starting from ___',
+    startingFrom: 'Starting from Rs. 2,000',
     description: 'A beautifully designed invitation video, ready to share.',
     features: [
       'One animated invitation video',
@@ -23,7 +23,7 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     id: 'standard',
     name: 'Standard',
-    startingFrom: 'Starting from ___',
+    startingFrom: 'Starting from Rs. 5,000',
     description: 'Your own invitation website, with a private link only your guests can access.',
     features: [
       'Everything in Basic',
@@ -36,7 +36,7 @@ export const PRICING_TIERS: PricingTier[] = [
   {
     id: 'premium',
     name: 'Premium',
-    startingFrom: 'Starting from ___',
+    startingFrom: 'Starting from Rs. 7,000',
     description: 'The complete experience — your invitation website on your own domain.',
     features: [
       'Everything in Standard',
