@@ -29,6 +29,7 @@ const DATA: InvitationData = {
       <app-invite-template-basic [data]="DATA" />
     </app-invite-pin-gate>
   `,
+  styles: [':host { display: block; }'],
 })
 export class SampleAminaZain {
   protected readonly DATA = DATA;

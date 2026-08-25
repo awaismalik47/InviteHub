@@ -12,5 +12,6 @@ import { Footer } from '../../components/footer/footer';
   imports: [Nav, Hero, Categories, Portfolio, HowItWorks, Pricing, Contact, Footer],
   selector: 'app-home',
   templateUrl: './home.html',
+  styles: [':host { display: block; }'],
 })
 export class Home {}

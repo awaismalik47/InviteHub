@@ -56,6 +56,7 @@ const CONFIG: WeddingConfig = {
       <app-wedding-royal [config]="CONFIG" [slug]="SLUG" />
     </app-invite-pin-gate>
   `,
+  styles: [':host { display: block; }'],
 })
 export class AsadRuqia {
   protected readonly CONFIG = CONFIG;
