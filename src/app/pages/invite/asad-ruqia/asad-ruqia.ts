@@ -36,7 +36,7 @@ const CONFIG: WeddingConfig = {
     latitude: 31.5204,
     longitude: 74.3587,
   },
-  gallery: [],
+  gallery: ['invites/asad-ruqia-r4n8w2sq/gallery/wedding_inv_couple.png'],
   dressCode: {
     women: 'Elegant formal attire in pastel or jewel tones',
     men: 'Suit or traditional formal wear',
