@@ -1,0 +1,32 @@
+<section class="event-timeline" id="events">
+  <div class="container">
+    <div class="event-timeline__heading" #heading>
+      <svg class="event-timeline__icon-top" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <h2>Program Timeline</h2>
+      <span class="event-timeline__divider" aria-hidden="true">
+        <i></i>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+        <i></i>
+      </span>
+    </div>
+
+    <div class="event-timeline__list" #list>
+      @for (event of config().events; track event.name) {
+        <article class="event-timeline__item">
+          <span class="event-timeline__dot" aria-hidden="true"></span>
+          <div class="event-timeline__body">
+            <h3>{{ event.name }}</h3>
+            <p class="event-timeline__meta">{{ event.date | date: 'MMM d, y' }}, {{ event.time }}</p>
+            @if (event.description) {
+              <p class="event-timeline__desc">{{ event.description }}</p>
+            }
+            <button type="button" class="event-timeline__link" (click)="viewLocation()">{{ event.venue }}</button>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

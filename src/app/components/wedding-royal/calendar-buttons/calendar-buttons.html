@@ -1,0 +1,11 @@
+<section class="calendar-buttons" id="calendar">
+  <div class="container calendar-buttons__panel" #panel>
+    <a class="calendar-buttons__cta" [href]="googleCalendarUrl()" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 6v12H5V8h14ZM7 10v2h2v-2H7Zm4 0v2h2v-2h-2Zm4 0v2h2v-2h-2Z"/>
+      </svg>
+      <span>Save The Date</span>
+    </a>
+    <button type="button" class="calendar-buttons__ics" (click)="downloadIcs()">Add this event to your calendar</button>
+  </div>
+</section>

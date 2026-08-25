@@ -1,0 +1,31 @@
+<section class="guest-book" id="guestbook">
+  <div class="container">
+    <div class="section-heading guest-book__heading">
+      <span class="eyebrow">Guest Wishes</span>
+      <h2>Messages For Us</h2>
+    </div>
+
+    <div class="guest-book__panel" #panel>
+      <form class="guest-book__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+        <div class="field">
+          <label for="wish-name" class="visually-hidden">Your name</label>
+          <input id="wish-name" type="text" formControlName="name" placeholder="Your name" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="wish-message" class="visually-hidden">Your message</label>
+          <textarea id="wish-message" rows="2" formControlName="message" placeholder="Leave a wish for the couple…"></textarea>
+        </div>
+        <button type="submit" class="guest-book__submit">Post Wish</button>
+      </form>
+
+      <div class="guest-book__list" #list>
+        @for (wish of wishes(); track wish.date + wish.name) {
+          <article class="guest-book__card">
+            <p class="guest-book__message">“{{ wish.message }}”</p>
+            <p class="guest-book__meta">— {{ wish.name }} · {{ wish.date | date: 'd MMM y' }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>

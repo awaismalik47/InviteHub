@@ -1,0 +1,12 @@
+<nav class="floating-nav" aria-label="Invitation sections">
+  @for (link of links; track link.id) {
+    <button
+      type="button"
+      class="floating-nav__link"
+      [class.floating-nav__link--active]="activeId() === link.id"
+      (click)="scrollTo(link.id)"
+    >
+      {{ link.label }}
+    </button>
+  }
+</nav>

@@ -1,0 +1,25 @@
+<section class="story-timeline" id="story">
+  <div class="container">
+    <div class="section-heading story-timeline__heading" #heading>
+      <span class="eyebrow">Our Story</span>
+      <h2>The Journey So Far</h2>
+    </div>
+
+    <div class="story-timeline__list" #list>
+      @for (milestone of config().story; track milestone.year; let last = $last) {
+        <div class="story-timeline__item">
+          <div class="story-timeline__marker">
+            <span class="story-timeline__year">{{ milestone.year }}</span>
+            @if (!last) {
+              <span class="story-timeline__connector" aria-hidden="true"></span>
+            }
+          </div>
+          <div class="story-timeline__body">
+            <h3>{{ milestone.title }}</h3>
+            <p>{{ milestone.text }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

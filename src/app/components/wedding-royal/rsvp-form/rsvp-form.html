@@ -1,0 +1,63 @@
+<section class="rsvp-form" id="rsvp">
+  <div class="container">
+    <div class="rsvp-form__heading">
+      <svg class="rsvp-form__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="14" rx="2" stroke-linejoin="round" />
+        <path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <h2>RSVP</h2>
+      <span class="rsvp-form__divider" aria-hidden="true">
+        <i></i>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+        <i></i>
+      </span>
+    </div>
+
+    <div class="rsvp-form__panel" #panel>
+      @if (submitted()) {
+        <div class="rsvp-form__success" #success role="status">
+          <span class="rsvp-form__success-icon" aria-hidden="true">✓</span>
+          <p>Thank you! Your RSVP has been recorded.</p>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <div class="field">
+            <label for="rsvp-name">Your Name</label>
+            <input id="rsvp-name" type="text" formControlName="name" autocomplete="name" placeholder="Your full name" />
+            @if (form.controls.name.invalid && form.controls.name.touched) {
+              <span class="field__error">Please enter your name.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="rsvp-email">Email</label>
+            <input id="rsvp-email" type="email" formControlName="email" autocomplete="email" placeholder="you@example.com" />
+            @if (form.controls.email.invalid && form.controls.email.touched) {
+              <span class="field__error">Please enter a valid email.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="rsvp-attendance">Will you be attending?</label>
+            <select id="rsvp-attendance" formControlName="attendance">
+              <option value="" disabled>Select…</option>
+              <option value="attending">Yes, I'll be there</option>
+              <option value="maybe">Maybe</option>
+              <option value="not-attending">Can't make it</option>
+            </select>
+            @if (form.controls.attendance.invalid && form.controls.attendance.touched) {
+              <span class="field__error">Please let us know.</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="rsvp-message">Your Message</label>
+            <textarea id="rsvp-message" rows="3" formControlName="message" placeholder="Write your wishes…"></textarea>
+          </div>
+
+          <button type="submit" class="rsvp-form__submit">Send Message</button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

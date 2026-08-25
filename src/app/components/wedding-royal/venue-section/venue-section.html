@@ -1,0 +1,23 @@
+<section class="venue-section" id="venue">
+  <div class="container venue-section__panel" #panel>
+    <svg class="venue-section__pin" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" stroke-linecap="round" stroke-linejoin="round" />
+      <circle cx="12" cy="9" r="2.4" />
+    </svg>
+    <h2>Venue</h2>
+    <span class="venue-section__divider" aria-hidden="true">
+      <i></i>
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+      <i></i>
+    </span>
+
+    <h3>{{ config().venue.name }}</h3>
+    <p class="venue-section__address">{{ config().venue.address }}</p>
+
+    <svg class="venue-section__silhouette" viewBox="0 0 320 90" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 90 L0 60 L14 60 L14 40 L28 40 L28 60 L60 60 C60 40 70 22 90 22 C110 22 120 40 120 60 L140 60 L140 30 C140 12 152 0 160 0 C168 0 180 12 180 30 L180 60 L200 60 C200 40 210 22 230 22 C250 22 260 40 260 60 L292 60 L292 40 L306 40 L306 60 L320 60 L320 90 Z" fill="currentColor" opacity="0.18" />
+    </svg>
+
+    <a class="venue-section__directions" [href]="directionsUrl()" target="_blank" rel="noopener">View on Google Maps</a>
+  </div>
+</section>

@@ -1,0 +1,16 @@
+@if (musicSrc()) {
+  <audio #audio [src]="musicSrc()" loop></audio>
+
+  <button
+    type="button"
+    class="music-player"
+    [class.music-player--playing]="playing()"
+    (click)="toggle()"
+    [attr.aria-pressed]="playing()"
+    [attr.aria-label]="playing() ? 'Pause music' : 'Play music'"
+  >
+    <span class="music-player__bars" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </span>
+  </button>
+}

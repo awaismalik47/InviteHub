@@ -1,0 +1,14 @@
+<section class="hero-section" id="home" #section>
+  <div class="hero-section__bg" #bg [style.backgroundImage]="config().gallery[0] ? 'url(' + config().gallery[0] + ')' : null" aria-hidden="true"></div>
+  <div class="hero-section__overlay" aria-hidden="true"></div>
+
+  <div class="hero-section__content" #content>
+    <p class="hero-section__names">
+      {{ config().groom.name.toUpperCase() }}<br />
+      <span class="hero-section__amp">&amp;</span><br />
+      {{ config().bride.name.toUpperCase() }}
+    </p>
+    <p class="hero-section__quote">“{{ config().quote }}”</p>
+    <p class="hero-section__date">{{ config().weddingDate | date: 'd MMMM y' }}</p>
+  </div>
+</section>

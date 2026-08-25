@@ -1,0 +1,53 @@
+<section class="invitation-cover" aria-label="Invitation cover" (click)="playVideo()" (touchstart)="playVideo()">
+  <h1 class="visually-hidden">{{ config().groom.name }} &amp; {{ config().bride.name }}</h1>
+
+  @if (config().coverVideo) {
+    <video
+      #video
+      class="invitation-cover__video"
+      [src]="config().coverVideo"
+      [poster]="config().coverPoster"
+      muted
+      playsinline
+      preload="auto"
+    ></video>
+  } @else {
+    <div class="invitation-cover__fallback" [style.backgroundImage]="config().coverPoster ? 'url(' + config().coverPoster + ')' : null"></div>
+  }
+
+  @if (!playing()) {
+    <button type="button" class="invitation-cover__play" aria-label="Play video">
+      <span class="invitation-cover__play-visual">
+        <span class="invitation-cover__play-ring">
+          @for (i of [0, 1, 2, 3, 4, 5]; track i) {
+            <span class="invitation-cover__play-flower" [style.transform]="'rotate(' + (i * 60) + 'deg) translateY(-38px) rotate(' + (-i * 60) + 'deg)'">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(12,12)">
+                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" />
+                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(72)" />
+                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(144)" />
+                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(216)" />
+                  <ellipse cx="0" cy="-6" rx="3.4" ry="5.4" fill="#fff2d6" transform="rotate(288)" />
+                  <circle r="2.6" fill="#845b2b" />
+                </g>
+              </svg>
+            </span>
+          }
+        </span>
+        <span class="invitation-cover__play-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="#fff" /></svg>
+        </span>
+      </span>
+      <span class="invitation-cover__play-label">Tap to Play</span>
+    </button>
+  }
+
+  @if (finished()) {
+    <div class="invitation-cover__scroll-cue" aria-hidden="true">
+      <span class="invitation-cover__scroll-label">Scroll Down</span>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 4v15M6 13l6 6 6-6" />
+      </svg>
+    </div>
+  }
+</section>

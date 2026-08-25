@@ -1,0 +1,26 @@
+<section class="dress-code" id="dress-code">
+  <div class="container dress-code__inner" #panel>
+    <svg class="dress-code__icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M8 4 4 7l2 3 2-1.5V20h8V8.5L18 10l2-3-4-3-2 2h-4L8 4Z" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <h2>Dress Code</h2>
+    <span class="dress-code__divider" aria-hidden="true">
+      <i></i>
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+      <i></i>
+    </span>
+
+    <div class="dress-code__groups">
+      <div class="dress-code__group">
+        <h3>Women</h3>
+        <span class="dress-code__underline" aria-hidden="true"></span>
+        <p>{{ dressCode().women }}</p>
+      </div>
+      <div class="dress-code__group">
+        <h3>Men</h3>
+        <span class="dress-code__underline" aria-hidden="true"></span>
+        <p>{{ dressCode().men }}</p>
+      </div>
+    </div>
+  </div>
+</section>

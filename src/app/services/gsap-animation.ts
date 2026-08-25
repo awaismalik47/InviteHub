@@ -86,6 +86,25 @@ export class GsapAnimation {
     );
   }
 
+  /** Scrub-linked vertical drift for a background element as the page scrolls past its container. */
+  parallaxOnScroll(
+    container: Element,
+    el: Element,
+    opts: { yPercent?: number; start?: string; end?: string } = {},
+  ): void {
+    if (this.prefersReducedMotion) return;
+    gsap.to(el, {
+      yPercent: opts.yPercent ?? 18,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        start: opts.start ?? 'top bottom',
+        end: opts.end ?? 'bottom top',
+        scrub: true,
+      },
+    });
+  }
+
   /** Gentle lift/scale on hover for pointer devices, and a press state on tap. */
   addCardInteraction(el: HTMLElement): void {
     if (this.prefersReducedMotion) return;

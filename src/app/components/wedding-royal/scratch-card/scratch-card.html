@@ -1,0 +1,26 @@
+<section class="scratch-card" id="surprise">
+  <div class="container scratch-card__inner">
+    <div class="scratch-card__heading" #heading>
+      <h2>Scratch to Reveal</h2>
+      <span class="scratch-card__divider" aria-hidden="true">
+        <i></i>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+        <i></i>
+      </span>
+    </div>
+
+    <div class="scratch-card__wrap" #wrap>
+      <p class="scratch-card__message" [class.scratch-card__message--visible]="revealed()">{{ message() }}</p>
+      @if (!revealed()) {
+        <canvas
+          #canvas
+          class="scratch-card__canvas"
+          (pointerdown)="onPointerDown($event)"
+          (pointermove)="onPointerMove($event)"
+          (pointerup)="onPointerUp()"
+          (pointerleave)="onPointerUp()"
+        ></canvas>
+      }
+    </div>
+  </div>
+</section>

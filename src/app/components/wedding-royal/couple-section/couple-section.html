@@ -1,0 +1,47 @@
+<section class="couple-section" id="couple">
+  <div class="container">
+    <div class="section-heading couple-section__heading" #heading>
+      <span class="eyebrow">The Couple</span>
+      <h2>Two Families, One Celebration</h2>
+    </div>
+
+    <div class="couple-section__grid" #grid>
+      <div class="couple-section__profile">
+        @if (config().groom.image) {
+          <img class="couple-section__portrait" [src]="config().groom.image" [alt]="config().groom.name" />
+        } @else {
+          <div class="couple-section__portrait couple-section__portrait--placeholder">{{ initials(config().groom.name) }}</div>
+        }
+        <h3>{{ config().groom.name }}</h3>
+        @if (config().groom.description) {
+          <p class="couple-section__desc">{{ config().groom.description }}</p>
+        }
+        @if (config().groom.parents) {
+          <p class="couple-section__parents">Son of {{ config().groom.parents }}</p>
+        }
+      </div>
+
+      <div class="couple-section__ornament" aria-hidden="true">
+        <svg viewBox="0 0 40 120" width="32" height="96" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 4 L20 116" stroke="currentColor" stroke-width="1" opacity="0.5" />
+          <circle cx="20" cy="60" r="6" fill="currentColor" />
+        </svg>
+      </div>
+
+      <div class="couple-section__profile">
+        @if (config().bride.image) {
+          <img class="couple-section__portrait" [src]="config().bride.image" [alt]="config().bride.name" />
+        } @else {
+          <div class="couple-section__portrait couple-section__portrait--placeholder">{{ initials(config().bride.name) }}</div>
+        }
+        <h3>{{ config().bride.name }}</h3>
+        @if (config().bride.description) {
+          <p class="couple-section__desc">{{ config().bride.description }}</p>
+        }
+        @if (config().bride.parents) {
+          <p class="couple-section__parents">Daughter of {{ config().bride.parents }}</p>
+        }
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+<article class="invite-template">
+  <section class="invite-template__cover" #cover>
+    @if (data().video) {
+      <video class="invite-template__video" [src]="data().video" autoplay muted loop playsinline aria-hidden="true"></video>
+    } @else {
+      <svg class="invite-template__cover-motif" viewBox="0 0 120 160" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 152 C24 128 34 100 52 78 C64 63 74 52 88 34" stroke="rgba(255,255,255,0.4)" stroke-width="1.6" stroke-linecap="round" />
+        <g transform="translate(88,34)">
+          <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" />
+          <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(72)" />
+          <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(144)" />
+          <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(216)" />
+          <ellipse cx="0" cy="-9" rx="4.6" ry="7.2" fill="rgba(255,255,255,0.32)" transform="rotate(288)" />
+          <circle r="3.2" fill="#E9C46A" opacity="0.85" />
+        </g>
+      </svg>
+    }
+
+    <div class="invite-template__cover-inner">
+      <span class="eyebrow eyebrow--on-invite">{{ data().eyebrow }}</span>
+      <h1>{{ data().title }}</h1>
+      <p class="invite-template__subheading">{{ data().subheading }}</p>
+    </div>
+  </section>
+
+  <section class="invite-template__details" #details>
+    <div class="container invite-template__details-inner">
+      <app-floral-flourish />
+      <p class="invite-template__date">{{ data().dateLabel }}</p>
+      <p class="invite-template__venue">
+        {{ data().venueName }}
+        @if (data().venueAddress) {
+          <br /><span class="invite-template__venue-address">{{ data().venueAddress }}</span>
+        }
+      </p>
+      @if (data().message) {
+        <p class="invite-template__message">{{ data().message }}</p>
+      }
+    </div>
+  </section>
+
+  @if (data().photos?.length) {
+    <section class="invite-template__gallery" #gallery>
+      <div class="container invite-template__gallery-grid">
+        @for (photo of data().photos; track photo) {
+          <img class="invite-template__photo" [src]="photo" alt="" loading="lazy" />
+        }
+      </div>
+    </section>
+  }
+</article>

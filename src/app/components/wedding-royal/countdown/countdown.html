@@ -1,0 +1,35 @@
+<section class="countdown" id="countdown">
+  <div class="container countdown__inner">
+    <div class="countdown__heading" #heading>
+      <h2>Counting Down to Forever</h2>
+      <span class="countdown__divider" aria-hidden="true">
+        <i></i>
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.1C.4 8.6 2 5 5.6 5 8 5 10 6.4 12 9c2-2.6 4-4 6.4-4C22 5 23.6 8.6 22 11.9 19.5 16.4 12 21 12 21z"/></svg>
+        <i></i>
+      </span>
+    </div>
+
+    @if (arrived()) {
+      <p class="countdown__arrived">THE BIG DAY IS HERE ❤️</p>
+    } @else {
+      <div class="countdown__grid" #grid>
+        <div class="countdown__unit">
+          <span class="countdown__value">{{ breakdown().days }}</span>
+          <span class="countdown__label">Days</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__value">{{ breakdown().hours }}</span>
+          <span class="countdown__label">Hours</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__value">{{ breakdown().minutes }}</span>
+          <span class="countdown__label">Minutes</span>
+        </div>
+        <div class="countdown__unit">
+          <span class="countdown__value">{{ breakdown().seconds }}</span>
+          <span class="countdown__label">Seconds</span>
+        </div>
+      </div>
+    }
+  </div>
+</section>

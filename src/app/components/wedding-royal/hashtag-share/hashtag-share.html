@@ -1,0 +1,15 @@
+<section class="hashtag-share" id="share">
+  <div class="container hashtag-share__panel" #panel>
+    <span class="eyebrow">Share The Love</span>
+    <p class="hashtag-share__tag">{{ config().hashtag }}</p>
+
+    <div class="hashtag-share__actions">
+      <button type="button" class="hashtag-share__copy" (click)="copyHashtag()">
+        {{ copied() ? 'Copied!' : 'Copy Hashtag' }}
+      </button>
+      <a class="hashtag-share__icon" [href]="whatsappShare()" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WA</a>
+      <a class="hashtag-share__icon" [href]="facebookShare()" target="_blank" rel="noopener" aria-label="Share on Facebook">FB</a>
+      <a class="hashtag-share__icon" [href]="twitterShare()" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+    </div>
+  </div>
+</section>

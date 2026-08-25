@@ -1,0 +1,21 @@
+@if (unlocked()) {
+  <ng-content />
+} @else {
+  <section class="invite-gate">
+    <div class="invite-gate__panel">
+      <span class="eyebrow">You're Invited</span>
+      <h1 class="invite-gate__title">A private invitation</h1>
+      <p class="invite-gate__hint">Enter the code shared with you to view this invitation.</p>
+
+      <form class="invite-gate__form" (submit)="submit($event)" novalidate>
+        <label for="invite-pin" class="visually-hidden">Access code</label>
+        <input id="invite-pin" type="text" autocomplete="off" placeholder="Enter code" #codeInput />
+        <button type="submit" class="btn btn-primary">Unlock</button>
+      </form>
+
+      @if (error()) {
+        <p class="invite-gate__error" role="alert">That code doesn't match — please check and try again.</p>
+      }
+    </div>
+  </section>
+}

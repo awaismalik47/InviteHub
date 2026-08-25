@@ -1,0 +1,52 @@
+.invite-gate {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  background: linear-gradient(160deg, #4A3B78 0%, #5B4B8A 45%, #3D3163 100%);
+}
+
+.invite-gate__panel {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  box-shadow: var(--shadow-lift);
+}
+
+.invite-gate__title {
+  margin: 0.75rem 0 0.4rem;
+  font-size: 1.5rem;
+}
+
+.invite-gate__hint {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
+.invite-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.invite-gate__form input {
+  width: 100%;
+  padding: 0.85em 1em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(61, 49, 99, 0.2);
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.invite-gate__error {
+  margin: 1rem 0 0;
+  color: #B3261E;
+  font-size: 0.9rem;
+}
