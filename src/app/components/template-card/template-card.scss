@@ -1,54 +1,140 @@
-.template-card {
+:host {
+  display: block;
+  width: 100%;
+}
+
+.reel {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 240px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-card);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: height 0.4s ease, box-shadow 0.4s ease;
 }
 
-.template-card--v1 {
-  background: linear-gradient(165deg, #5b4b8a 0%, #3d3163 100%);
-}
-.template-card--v2 {
-  background: linear-gradient(165deg, #c99b3a 0%, #7a5a1f 100%);
-}
-.template-card--v3 {
-  background: linear-gradient(165deg, #d8b4e2 0%, #8a5f96 100%);
-}
-.template-card--v4 {
-  background: linear-gradient(165deg, #6c5f91 0%, #2f2749 100%);
-}
-
-.template-card__category {
+.reel__video {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tiered "coverflow" depth: the active slide sits taller and elevated, its
+   immediate neighbours a step down, everything else at the base tier —
+   :host-context reaches up to the swiper-slide state classes set by Swiper
+   on the ancestor <swiper-slide>, which live outside this component's own
+   view-encapsulation boundary. */
+:host-context(.swiper-slide-prev) .reel,
+:host-context(.swiper-slide-next) .reel {
+  height: 300px;
+  z-index: 2;
+}
+
+:host-context(.swiper-slide-active) .reel {
+  height: 380px;
+  box-shadow: var(--shadow-lift);
+  z-index: 3;
+}
+
+.reel--v1 {
+  background: linear-gradient(165deg, #241b35 0%, #0f0c17 100%);
+}
+.reel--v2 {
+  background: linear-gradient(165deg, #2b2414 0%, #16120a 100%);
+}
+.reel--v3 {
+  background: linear-gradient(165deg, #221a30 0%, #100c18 100%);
+}
+.reel--v4 {
+  background: linear-gradient(165deg, #261c34 0%, #120e1c 100%);
+}
+
+.reel__category {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
   font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fff;
   background: rgba(255, 255, 255, 0.16);
   padding: 0.3em 0.8em;
   border-radius: 999px;
+  z-index: 1;
 }
 
-.template-card__sparkle {
+.reel__sparkle {
   position: absolute;
   top: 0.95rem;
   right: 0.95rem;
   opacity: 0.85;
+  z-index: 1;
 }
 
-.template-card__title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: #fff;
+.reel__play {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+:host-context(.swiper-slide-prev) .reel__play,
+:host-context(.swiper-slide-next) .reel__play {
+  width: 52px;
+  height: 52px;
+}
+
+:host-context(.swiper-slide-active) .reel__play {
+  width: 64px;
+  height: 64px;
+}
+
+.reel-meta {
+  text-align: center;
+  margin-top: 0.85rem;
+}
+
+.reel-meta__name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.86rem;
+  color: var(--color-primary-dark);
   margin: 0;
+  transition: font-size 0.4s ease;
+}
+
+:host-context(.swiper-slide-prev) .reel-meta__name,
+:host-context(.swiper-slide-next) .reel-meta__name {
+  font-size: 0.94rem;
+}
+
+:host-context(.swiper-slide-active) .reel-meta__name {
+  font-size: 1.1rem;
+}
+
+@media (min-width: 900px) {
+  :host-context(.swiper-slide-prev) .reel,
+  :host-context(.swiper-slide-next) .reel {
+    height: 330px;
+  }
+
+  :host-context(.swiper-slide-active) .reel {
+    height: 420px;
+  }
 }

@@ -1,4 +1,4 @@
-<section class="template-carousel" #section>
+<section class="section template-carousel" #section>
   <div class="container">
     <div class="section-heading">
       <span class="eyebrow">{{ eyebrow() }}</span>
@@ -6,7 +6,24 @@
     </div>
   </div>
 
-  <swiper-container #swiperEl init="false" class="template-carousel__swiper">
-    <ng-content />
-  </swiper-container>
+  <div class="template-carousel__slider">
+    <button type="button" class="template-carousel__nav template-carousel__nav--prev" aria-label="Previous template" (click)="slidePrev()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button type="button" class="template-carousel__nav template-carousel__nav--next" aria-label="Next template" (click)="slideNext()">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+        <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <swiper-container #swiperEl init="false" class="template-carousel__swiper">
+      @for (slide of slideSet().slides; track slide.key) {
+        <swiper-slide class="template-carousel__slide">
+          <app-template-card [item]="slide.item" />
+        </swiper-slide>
+      }
+    </swiper-container>
+  </div>
 </section>

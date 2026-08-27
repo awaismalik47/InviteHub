@@ -4,6 +4,8 @@ export interface Review {
   eventType: string;
   rating: 1 | 2 | 3 | 4 | 5;
   quote: string;
+  /** Once a real client photo is available, set this and it renders instead of an initials avatar. */
+  image?: string;
 }
 
 /** Placeholder testimonials — swap for real client reviews once available. */

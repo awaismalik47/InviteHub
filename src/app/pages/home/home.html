@@ -5,22 +5,10 @@
   <app-portfolio />
 
   @for (category of templateCategories; track category.id) {
-    <app-template-carousel [eyebrow]="category.eyebrow" [heading]="category.heading">
-      @for (item of category.items; track item.id) {
-        <swiper-slide>
-          <app-template-card [item]="item" />
-        </swiper-slide>
-      }
-    </app-template-carousel>
+    <app-template-carousel [eyebrow]="category.eyebrow" [heading]="category.heading" [items]="category.items" />
   }
 
-  <app-template-carousel eyebrow="What Clients Say" heading="Reviews">
-    @for (review of reviews; track review.id) {
-      <swiper-slide>
-        <app-review-card [review]="review" />
-      </swiper-slide>
-    }
-  </app-template-carousel>
+  <app-reviews [reviews]="reviews" />
 
   <app-how-it-works />
   <app-pricing />

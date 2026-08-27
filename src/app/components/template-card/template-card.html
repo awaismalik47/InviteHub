@@ -1,9 +1,23 @@
-<article class="template-card" [class]="'template-card--v' + item().variant">
-  <span class="template-card__category">{{ item().categoryLabel }}</span>
-  <span class="template-card__sparkle" aria-hidden="true">
+<article class="reel" [class]="'reel--v' + item().variant" [attr.aria-label]="'Template preview: ' + item().title">
+  @if (item().video) {
+    <video class="reel__video" [src]="item().video" autoplay muted loop playsinline></video>
+  }
+
+  <span class="reel__category">{{ item().categoryLabel }}</span>
+
+  <span class="reel__sparkle" aria-hidden="true">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="#E9C46A">
       <path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" />
     </svg>
   </span>
-  <h3 class="template-card__title">{{ item().title }}</h3>
+
+  <span class="reel__play" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+      <path d="M8 5.5v13l11-6.5-11-6.5Z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round" fill="rgba(255,255,255,0.15)" />
+    </svg>
+  </span>
 </article>
+
+<div class="reel-meta">
+  <p class="reel-meta__name">{{ item().title }}</p>
+</div>

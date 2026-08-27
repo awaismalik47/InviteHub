@@ -1,27 +1,80 @@
 .template-carousel {
-  padding: var(--section-pad-y) 0;
   overflow: hidden;
 }
 
-.template-carousel .section-heading {
-  margin-bottom: 2rem;
+/* ---------- Swiper ---------- */
+.template-carousel__slider {
+  position: relative;
 }
 
 .template-carousel__swiper {
-  width: 100%;
-  padding: 0.5rem 0 3rem;
-
-  --swiper-pagination-color: var(--color-primary);
-  --swiper-pagination-bullet-inactive-color: var(--color-text-muted);
-  --swiper-pagination-bullet-inactive-opacity: 0.35;
+  --swiper-theme-color: #{'#5B4B8A'};
+  padding: 0.25rem 1.25rem 1.5rem;
 }
 
-.template-carousel__swiper swiper-slide {
-  width: min(72vw, 300px);
+.template-carousel__swiper::part(wrapper) {
+  align-items: center;
 }
 
-@media (min-width: 640px) {
-  .template-carousel__swiper swiper-slide {
-    width: 260px;
+/* Custom nav buttons, kept outside the swiper-container entirely so they
+   can sit in the section's own gutter without being clipped by Swiper's
+   internal overflow:hidden slide track — same reasoning as the portfolio slider. */
+.template-carousel__nav {
+  display: none;
+  position: absolute;
+  top: 45%;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-white);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  z-index: 5;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.template-carousel__nav:hover {
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lift);
+}
+
+.template-carousel__nav:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+.template-carousel__nav--prev {
+  left: 0.75rem;
+}
+
+.template-carousel__nav--next {
+  right: 0.75rem;
+}
+
+/* Pinned height so the row never shrinks/grows as individual slides
+   cross-fade between tiers — see the portfolio slider's identical comment. */
+.template-carousel__slide {
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 900px) {
+  .template-carousel__swiper {
+    padding: 0.25rem 4.5rem 2rem;
+  }
+
+  .template-carousel__nav {
+    display: flex;
+  }
+
+  .template-carousel__slide {
+    height: 470px;
   }
 }

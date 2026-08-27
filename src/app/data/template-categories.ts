@@ -4,6 +4,8 @@ export interface TemplateItem {
   categoryLabel: string;
   /** Palette variant so placeholder cards read as a varied collection, matching the portfolio reel convention. */
   variant: 1 | 2 | 3 | 4;
+  /** Once a real preview video is available, set this and it renders instead of the placeholder gradient card. */
+  video?: string;
 }
 
 export interface TemplateCategoryGroup {

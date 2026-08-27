@@ -1,0 +1,14 @@
+<section class="section reviews" id="reviews">
+  <div class="container">
+    <div class="section-heading" #heading>
+      <span class="eyebrow">What Clients Say</span>
+      <h2>Loved by the couples we've worked with</h2>
+    </div>
+
+    <div class="reviews__grid" #grid>
+      @for (review of reviews(); track review.id) {
+        <app-review-card [review]="review" />
+      }
+    </div>
+  </div>
+</section>

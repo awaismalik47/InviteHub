@@ -1,0 +1,22 @@
+.reviews {
+  background: var(--color-bg);
+}
+
+.reviews__grid {
+  columns: 1;
+  column-gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .reviews__grid {
+    columns: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .reviews__grid {
+    columns: 3;
+  }
+}
