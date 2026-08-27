@@ -27,12 +27,12 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
     eyebrow: 'For Your Big Day',
     heading: 'Wedding Invitation Templates',
     items: [
-      { id: 'wed-01', title: 'Royal Gold Foil', categoryLabel: 'Wedding', variant: 1 },
-      { id: 'wed-02', title: 'Floral Romance', categoryLabel: 'Wedding', variant: 2 },
-      { id: 'wed-03', title: 'Modern Minimal', categoryLabel: 'Wedding', variant: 3 },
-      { id: 'wed-04', title: 'Rustic Garden', categoryLabel: 'Wedding', variant: 4 },
-      { id: 'wed-05', title: 'Islamic Elegance', categoryLabel: 'Wedding', variant: 1 },
-      { id: 'wed-06', title: 'Vintage Lace', categoryLabel: 'Wedding', variant: 2 },
+      { id: 'wed-01', title: 'Royal Gold Foil', categoryLabel: 'Baraat', variant: 1 },
+      { id: 'wed-02', title: 'Floral Romance', categoryLabel: 'Mehndi', variant: 2 },
+      { id: 'wed-03', title: 'Modern Minimal', categoryLabel: 'Nikah', variant: 3 },
+      { id: 'wed-04', title: 'Rustic Garden', categoryLabel: 'Dholki', variant: 4 },
+      { id: 'wed-05', title: 'Islamic Elegance', categoryLabel: 'Walima', variant: 1 },
+      { id: 'wed-06', title: 'Vintage Lace', categoryLabel: 'Bridal Shower', variant: 2 },
     ],
   },
   {
