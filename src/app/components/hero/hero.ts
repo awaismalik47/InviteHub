@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, viewChild } from '@angular/core';
 import { gsap } from 'gsap';
 import { GsapAnimation } from '../../services/gsap-animation';
+import { whatsappLink } from '../../data/studio-contact';
 
 interface Petal {
   id: number;
@@ -169,5 +170,9 @@ export class Hero implements AfterViewInit, OnDestroy {
 
   scrollTo(id: string): void {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  get bookNowLink(): string {
+    return whatsappLink('Hi InviteVibe! I’d like to book a custom invitation design.');
   }
 }

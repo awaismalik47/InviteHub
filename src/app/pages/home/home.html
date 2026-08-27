@@ -3,7 +3,7 @@
   <app-hero />
 
   @for (category of templateCategories; track category.id; let last = $last) {
-    <app-template-carousel [eyebrow]="category.eyebrow" [heading]="category.heading" [items]="category.items" />
+    <app-template-carousel [eyebrow]="category.eyebrow" [heading]="category.heading" [items]="category.items" [sectionId]="category.id" />
     @if (!last) {
       <app-section-connector />
     }

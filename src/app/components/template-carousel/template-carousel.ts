@@ -42,6 +42,8 @@ export class TemplateCarousel implements AfterViewInit {
   eyebrow = input.required<string>();
   heading = input.required<string>();
   items = input.required<TemplateItem[]>();
+  /** Optional anchor id so nav/hero links can scroll straight to a specific category. */
+  sectionId = input<string>();
 
   /** The real items padded with duplicate slides at each end, same approach as the portfolio slider — see its comment for why. */
   readonly slideSet = computed(() => {

@@ -2,9 +2,7 @@ import { AfterViewInit, Component, ElementRef, inject, signal, viewChild } from 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloralFlourish } from '../floral-flourish/floral-flourish';
 import { GsapAnimation } from '../../services/gsap-animation';
-
-/** Replace with the studio's real WhatsApp Business number, digits only, country code first. */
-const WHATSAPP_NUMBER = '10000000000';
+import { whatsappLink } from '../../data/studio-contact';
 
 @Component({
   imports: [ReactiveFormsModule, FloralFlourish],
@@ -43,9 +41,7 @@ export class Contact implements AfterViewInit {
   }
 
   get whatsappLink(): string {
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      'Hi InviteVibe! I’d love to enquire about a custom invitation design.',
-    )}`;
+    return whatsappLink('Hi InviteVibe! I’d love to enquire about a custom invitation design.');
   }
 
   submit(): void {
@@ -63,7 +59,7 @@ export class Contact implements AfterViewInit {
       `Details: ${message}`,
     ].filter(Boolean);
 
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+    window.open(whatsappLink(lines.join('\n')), '_blank');
     this.submitted.set(true);
     this.form.reset();
   }

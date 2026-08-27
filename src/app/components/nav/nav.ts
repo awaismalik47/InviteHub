@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { Logo } from '../logo/logo';
+import { whatsappLink } from '../../data/studio-contact';
 
 interface NavLink {
   id: string;
@@ -14,12 +15,14 @@ interface NavLink {
 })
 export class Nav {
   readonly links: NavLink[] = [
-    { id: 'categories', label: 'Categories' },
-    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'premium', label: 'Templates' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'how-it-works', label: 'How it works' },
+    { id: 'reviews', label: 'Reviews' },
     { id: 'contact', label: 'Contact' },
   ];
+
+  readonly bookNowLink = whatsappLink('Hi InviteVibe! I’d like to book a custom invitation design.');
 
   readonly menuOpen = signal(false);
 
