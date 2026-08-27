@@ -1,0 +1,43 @@
+.section-connector {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  opacity: 0.55;
+}
+
+.section-connector__line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-connector__path {
+  animation: section-connector-flow 7s linear infinite;
+}
+
+@keyframes section-connector-flow {
+  to {
+    stroke-dashoffset: -144;
+  }
+}
+
+.section-connector__sparkle {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  padding: 0 0.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-connector__path {
+    animation: none;
+  }
+}
