@@ -139,6 +139,14 @@
   backface-visibility: hidden;
 }
 
+@media (max-width: 639px) {
+  .hero__cover {
+    /* On narrow screens the hero is proportionally taller, so the same 92%
+       depth reads as an overlong dagger — pull the flap's point up. */
+    clip-path: polygon(0 0, 100% 0, 50% 58%);
+  }
+}
+
 .hero__cover::before {
   content: '';
   position: absolute;

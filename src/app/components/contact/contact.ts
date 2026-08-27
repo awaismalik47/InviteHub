@@ -40,10 +40,6 @@ export class Contact implements AfterViewInit {
     this.anim.revealOnScroll(this.panel().nativeElement);
   }
 
-  get whatsappLink(): string {
-    return whatsappLink('Hi InviteVibe! I’d love to enquire about a custom invitation design.');
-  }
-
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();

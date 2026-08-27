@@ -53,20 +53,23 @@
   pointer-events: none;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
   opacity: 0;
-  animation: floating-whatsapp-peek 8s ease-in-out infinite;
-  animation-delay: 1s;
+  /* A 50s cycle: peeks in, holds for 5s, fades out, then stays hidden until the next cycle. */
+  animation: floating-whatsapp-peek 50s ease-in-out infinite;
+  animation-delay: 3s;
 }
 
 @keyframes floating-whatsapp-peek {
-  0%, 100% {
+  0% {
     opacity: 0;
     transform: translateX(-50%) translateY(14px);
   }
-  8%, 55% {
+  0.8%,
+  10.8% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
-  68% {
+  11.6%,
+  100% {
     opacity: 0;
     transform: translateX(-50%) translateY(14px);
   }
