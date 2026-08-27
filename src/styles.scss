@@ -26,14 +26,14 @@
   --radius-lg: 24px;
 
   --container-max: 1180px;
-  --section-pad-y: 4.5rem;
+  --section-pad-y: 3rem;
 
   --focus-ring: 0 0 0 3px rgba(233, 196, 106, 0.55);
 }
 
 @media (min-width: 768px) {
   :root {
-    --section-pad-y: 6.5rem;
+    --section-pad-y: 4.5rem;
   }
 }
 

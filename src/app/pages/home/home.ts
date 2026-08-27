@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Nav } from '../../components/nav/nav';
 import { Hero } from '../../components/hero/hero';
-import { Categories } from '../../components/categories/categories';
 import { TemplateCarousel } from '../../components/template-carousel/template-carousel';
 import { SectionConnector } from '../../components/section-connector/section-connector';
 import { Reviews } from '../../components/reviews/reviews';
@@ -13,7 +12,7 @@ import { TEMPLATE_CATEGORIES } from '../../data/template-categories';
 import { REVIEWS } from '../../data/reviews';
 
 @Component({
-  imports: [Nav, Hero, Categories, TemplateCarousel, SectionConnector, Reviews, HowItWorks, Pricing, Contact, Footer],
+  imports: [Nav, Hero, TemplateCarousel, SectionConnector, Reviews, HowItWorks, Pricing, Contact, Footer],
   selector: 'app-home',
   templateUrl: './home.html',
   styles: [':host { display: block; }'],
