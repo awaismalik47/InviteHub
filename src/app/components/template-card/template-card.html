@@ -1,0 +1,9 @@
+<article class="template-card" [class]="'template-card--v' + item().variant">
+  <span class="template-card__category">{{ item().categoryLabel }}</span>
+  <span class="template-card__sparkle" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="#E9C46A">
+      <path d="M12 0 L14.2 9.8 L24 12 L14.2 14.2 L12 24 L9.8 14.2 L0 12 L9.8 9.8 Z" />
+    </svg>
+  </span>
+  <h3 class="template-card__title">{{ item().title }}</h3>
+</article>

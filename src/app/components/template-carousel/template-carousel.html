@@ -1,0 +1,12 @@
+<section class="template-carousel" #section>
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">{{ eyebrow() }}</span>
+      <h2>{{ heading() }}</h2>
+    </div>
+  </div>
+
+  <swiper-container #swiperEl init="false" class="template-carousel__swiper">
+    <ng-content />
+  </swiper-container>
+</section>

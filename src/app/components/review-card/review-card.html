@@ -1,0 +1,14 @@
+<article class="review-card">
+  <div class="review-card__stars" [attr.aria-label]="review().rating + ' out of 5 stars'">
+    @for (star of stars; track star) {
+      <svg viewBox="0 0 20 20" width="15" height="15" [attr.fill]="star <= review().rating ? '#E9C46A' : '#E0DAEB'" aria-hidden="true">
+        <path d="M10 1 L12.6 6.9 L19 7.6 L14.2 11.9 L15.6 18.2 L10 14.9 L4.4 18.2 L5.8 11.9 L1 7.6 L7.4 6.9 Z" />
+      </svg>
+    }
+  </div>
+  <p class="review-card__quote">“{{ review().quote }}”</p>
+  <p class="review-card__author">
+    <strong>{{ review().name }}</strong>
+    <span>{{ review().eventType }}</span>
+  </p>
+</article>

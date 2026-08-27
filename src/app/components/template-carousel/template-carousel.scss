@@ -1,0 +1,27 @@
+.template-carousel {
+  padding: var(--section-pad-y) 0;
+  overflow: hidden;
+}
+
+.template-carousel .section-heading {
+  margin-bottom: 2rem;
+}
+
+.template-carousel__swiper {
+  width: 100%;
+  padding: 0.5rem 0 3rem;
+
+  --swiper-pagination-color: var(--color-primary);
+  --swiper-pagination-bullet-inactive-color: var(--color-text-muted);
+  --swiper-pagination-bullet-inactive-opacity: 0.35;
+}
+
+.template-carousel__swiper swiper-slide {
+  width: min(72vw, 300px);
+}
+
+@media (min-width: 640px) {
+  .template-carousel__swiper swiper-slide {
+    width: 260px;
+  }
+}
