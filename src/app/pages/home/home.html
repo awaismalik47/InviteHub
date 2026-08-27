@@ -2,7 +2,6 @@
 <main>
   <app-hero />
   <app-categories />
-  <app-portfolio />
 
   @for (category of templateCategories; track category.id) {
     <app-template-carousel [eyebrow]="category.eyebrow" [heading]="category.heading" [items]="category.items" />

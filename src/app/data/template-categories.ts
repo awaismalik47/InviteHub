@@ -23,6 +23,19 @@ export interface TemplateCategoryGroup {
  */
 export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
   {
+    id: 'premium',
+    eyebrow: 'The Premium Collection',
+    heading: 'Premium Templates',
+    items: [
+      { id: 'prem-01', title: 'Regal Gold Foil', categoryLabel: 'Wedding', variant: 1 },
+      { id: 'prem-02', title: 'Velvet Rose Suite', categoryLabel: 'Engagement', variant: 3 },
+      { id: 'prem-03', title: 'Platinum Script', categoryLabel: 'Anniversary', variant: 4 },
+      { id: 'prem-04', title: 'Diamond Halo', categoryLabel: 'Wedding', variant: 2 },
+      { id: 'prem-05', title: 'Opulent Bloom', categoryLabel: 'Corporate', variant: 1 },
+      { id: 'prem-06', title: 'Ivory & Gold Crest', categoryLabel: 'Baby Shower', variant: 3 },
+    ],
+  },
+  {
     id: 'trending',
     eyebrow: 'Trending Now',
     heading: 'Trending Templates',
