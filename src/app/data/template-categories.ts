@@ -36,6 +36,19 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
     ],
   },
   {
+    id: 'website',
+    eyebrow: 'Full Invitation Websites',
+    heading: 'Website Templates',
+    items: [
+      { id: 'site-01', title: 'Royal Landing', categoryLabel: 'Website', variant: 1 },
+      { id: 'site-02', title: 'Story & Countdown', categoryLabel: 'Website', variant: 2 },
+      { id: 'site-03', title: 'Gallery First', categoryLabel: 'Website', variant: 3 },
+      { id: 'site-04', title: 'Single Page Elegant', categoryLabel: 'Website', variant: 4 },
+      { id: 'site-05', title: 'RSVP & Guestbook', categoryLabel: 'Website', variant: 1 },
+      { id: 'site-06', title: 'Multi-Event Suite', categoryLabel: 'Website', variant: 2 },
+    ],
+  },
+  {
     id: 'premium',
     eyebrow: 'The Premium Collection',
     heading: 'Premium Templates',
