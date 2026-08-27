@@ -5,12 +5,28 @@ export interface WeddingPerson {
   parents?: string;
 }
 
+/**
+ * Known event kinds get a themed icon in the program timeline (see
+ * EVENT_ICONS in event-timeline.ts). Omit or use 'other' for anything
+ * that doesn't fit — it still renders fine, just with a neutral icon.
+ */
+export type WeddingEventType =
+  | 'bridal-shower'
+  | 'dholki'
+  | 'mehndi'
+  | 'baraat'
+  | 'nikah'
+  | 'walima'
+  | 'other';
+
 export interface WeddingEvent {
   name: string;
   date: string;
   time: string;
   venue: string;
   description?: string;
+  /** Drives which icon shows next to this event in the timeline. */
+  type?: WeddingEventType;
 }
 
 export interface StoryMilestone {

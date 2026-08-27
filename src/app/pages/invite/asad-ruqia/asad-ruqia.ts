@@ -21,9 +21,11 @@ const CONFIG: WeddingConfig = {
   invitationMessage:
     'With joyful hearts and the blessings of our families, we invite you to celebrate the beginning of our forever.',
   events: [
-    { name: 'Mehndi', date: '2026-12-18', time: '7:00 PM', venue: 'Venue name — to be confirmed' },
-    { name: 'Baraat', date: '2026-12-19', time: '7:00 PM', venue: 'Venue name — to be confirmed' },
-    { name: 'Walima', date: '2026-12-20', time: '8:00 PM', venue: 'Venue name — to be confirmed' },
+    { name: 'Bridal Shower', type: 'bridal-shower', date: '2026-12-16', time: '6:00 PM', venue: 'Venue name — to be confirmed' },
+    { name: 'Dholki', type: 'dholki', date: '2026-12-17', time: '7:00 PM', venue: 'Venue name — to be confirmed' },
+    { name: 'Mehndi', type: 'mehndi', date: '2026-12-18', time: '7:00 PM', venue: 'Venue name — to be confirmed' },
+    { name: 'Baraat', type: 'baraat', date: '2026-12-19', time: '7:00 PM', venue: 'Venue name — to be confirmed' },
+    { name: 'Walima', type: 'walima', date: '2026-12-20', time: '8:00 PM', venue: 'Venue name — to be confirmed' },
   ],
   story: [
     { year: '2019', title: 'The Beginning', text: 'Two strangers met…' },

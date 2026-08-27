@@ -16,7 +16,7 @@
     <div class="event-timeline__list" #list>
       @for (event of config().events; track event.name) {
         <article class="event-timeline__item">
-          <span class="event-timeline__dot" aria-hidden="true"></span>
+          <span class="event-timeline__dot" aria-hidden="true">{{ eventIcon(event.type) }}</span>
           <div class="event-timeline__body">
             <h3>{{ event.name }}</h3>
             <p class="event-timeline__meta">{{ event.date | date: 'MMM d, y' }}, {{ event.time }}</p>
