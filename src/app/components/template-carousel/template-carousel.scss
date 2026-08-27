@@ -1,5 +1,10 @@
 .template-carousel {
   overflow: hidden;
+  padding: 2.5rem 0;
+}
+
+.template-carousel .section-heading {
+  margin-bottom: 1.5rem;
 }
 
 /* ---------- Swiper ---------- */
@@ -9,7 +14,7 @@
 
 .template-carousel__swiper {
   --swiper-theme-color: #{'#5B4B8A'};
-  padding: 0.25rem 1.25rem 1.5rem;
+  padding: 0.25rem 1.25rem 0.5rem;
 }
 
 .template-carousel__swiper::part(wrapper) {
@@ -67,7 +72,7 @@
 
 @media (min-width: 900px) {
   .template-carousel__swiper {
-    padding: 0.25rem 4.5rem 2rem;
+    padding: 0.25rem 4.5rem 0.75rem;
   }
 
   .template-carousel__nav {
