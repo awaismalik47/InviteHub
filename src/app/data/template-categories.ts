@@ -23,6 +23,19 @@ export interface TemplateCategoryGroup {
  */
 export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
   {
+    id: 'wedding',
+    eyebrow: 'For Your Big Day',
+    heading: 'Wedding Invitation Templates',
+    items: [
+      { id: 'wed-01', title: 'Royal Gold Foil', categoryLabel: 'Wedding', variant: 1 },
+      { id: 'wed-02', title: 'Floral Romance', categoryLabel: 'Wedding', variant: 2 },
+      { id: 'wed-03', title: 'Modern Minimal', categoryLabel: 'Wedding', variant: 3 },
+      { id: 'wed-04', title: 'Rustic Garden', categoryLabel: 'Wedding', variant: 4 },
+      { id: 'wed-05', title: 'Islamic Elegance', categoryLabel: 'Wedding', variant: 1 },
+      { id: 'wed-06', title: 'Vintage Lace', categoryLabel: 'Wedding', variant: 2 },
+    ],
+  },
+  {
     id: 'premium',
     eyebrow: 'The Premium Collection',
     heading: 'Premium Templates',
