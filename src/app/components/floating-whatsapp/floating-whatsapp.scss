@@ -24,8 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   transition: transform 0.2s ease;
 }
 
@@ -86,6 +86,11 @@
   .floating-whatsapp__couple {
     width: 116px;
     bottom: 52px;
+  }
+
+  .floating-whatsapp__button {
+    width: 100px;
+    height: 100px;
   }
 }
 
