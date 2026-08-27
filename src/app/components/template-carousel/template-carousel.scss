@@ -7,6 +7,14 @@
   margin-bottom: 1.5rem;
 }
 
+.template-carousel .eyebrow {
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  box-shadow: var(--shadow-card);
+}
+
 /* ---------- Swiper ---------- */
 .template-carousel__slider {
   position: relative;
