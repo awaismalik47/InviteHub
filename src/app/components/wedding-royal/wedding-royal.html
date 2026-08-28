@@ -1,5 +1,5 @@
-<app-invitation-cover [config]="config()" />
-<app-music-player [musicSrc]="config().musicSrc" [slug]="slug()" />
+<app-invitation-cover [config]="config()" (userInteracted)="musicPlayer.start()" />
+<app-music-player #musicPlayer [musicSrc]="config().musicSrc" [slug]="slug()" />
 
 <section class="wedding-royal__message" id="message">
   <div class="container wedding-royal__message-inner" #message>
