@@ -114,6 +114,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/blue-balloon-bash.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-10',
+        title: 'Daisy Garden',
+        categoryLabel: 'Birthday',
+        variant: 2,
+        video: 'Birthday-Templates/daisy-garden.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
