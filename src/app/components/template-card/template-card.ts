@@ -11,6 +11,10 @@ export class TemplateCard {
   item = input.required<TemplateItem>();
   /** Only the active (centered) card in its carousel plays with sound by default — every other card stays muted. */
   active = input(false);
+  /** Whether this card's whole carousel is actually on-screen right now.
+   * All visible cards autoplay (muted) once true — this just stops every
+   * category's videos autoplaying at once regardless of scroll position. */
+  carouselVisible = input(true);
 
   /** Explicit visitor override from the mute/unmute button — null means "follow the active-based default". */
   private readonly manualMuted = signal<boolean | null>(null);

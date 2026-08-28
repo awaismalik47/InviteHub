@@ -1,10 +1,10 @@
 <article class="reel" [class]="'reel--v' + item().variant" [attr.aria-label]="'Template preview: ' + item().title">
-  @if (item().video && active()) {
-    <!-- Only the centered slide ever gets a real <video> — with dozens of
-         buffer/duplicate slides in the carousel, giving every one of them an
-         autoplaying video meant potentially 20+ videos all fighting for
-         bandwidth on load. Every other card just shows its poster frame
-         below until it becomes active. -->
+  @if (item().video && carouselVisible()) {
+    <!-- Every card in an on-screen carousel autoplays (muted by default);
+         only the centered card gets sound. Gating on carouselVisible (not
+         just this card's own active state) means the six category carousels
+         stacked down the homepage don't all autoplay at once regardless of
+         scroll position — only whichever one you've actually scrolled to. -->
     <video #video class="reel__video" [src]="item().video" [poster]="item().poster" [muted]="muted()" autoplay loop playsinline preload="auto"></video>
 
     <button
