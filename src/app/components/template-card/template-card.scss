@@ -80,6 +80,28 @@
   z-index: 1;
 }
 
+.reel__mute {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.reel__mute:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.06);
+}
+
 .reel__play {
   position: relative;
   z-index: 1;
