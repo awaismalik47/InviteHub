@@ -6,6 +6,8 @@ export interface TemplateItem {
   variant: 1 | 2 | 3 | 4;
   /** Once a real preview video is available, set this and it renders instead of the placeholder gradient card. */
   video?: string;
+  /** Cover/poster frame shown while the video loads (and if it fails to play). Optional — add once a still is available for this template. */
+  poster?: string;
 }
 
 export interface TemplateCategoryGroup {
@@ -33,6 +35,21 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
       { id: 'wed-04', title: 'Rustic Garden', categoryLabel: 'Dholki', variant: 4 },
       { id: 'wed-05', title: 'Islamic Elegance', categoryLabel: 'Walima', variant: 1 },
       { id: 'wed-06', title: 'Vintage Lace', categoryLabel: 'Bridal Shower', variant: 2 },
+    ],
+  },
+  {
+    id: 'birthday',
+    eyebrow: 'Party Ready',
+    heading: 'Birthday Templates',
+    items: [
+      {
+        id: 'bday-01',
+        title: 'Little Princess Bash',
+        categoryLabel: 'Birthday',
+        variant: 1,
+        video: 'Birthday-Templates/little-princess-bash.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
