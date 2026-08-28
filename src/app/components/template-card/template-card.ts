@@ -15,6 +15,10 @@ export class TemplateCard {
    * All visible cards autoplay (muted) once true — this just stops every
    * category's videos autoplaying at once regardless of scroll position. */
   carouselVisible = input(true);
+  /** Whether this specific card is within the small window of slides near
+   * the centered one — see template-carousel's comment for why this exists
+   * (browser connection-limit starvation when too many videos load at once). */
+  slideVisible = input(true);
 
   /** Explicit visitor override from the mute/unmute button — null means "follow the active-based default". */
   private readonly manualMuted = signal<boolean | null>(null);

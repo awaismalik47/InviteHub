@@ -21,7 +21,12 @@
     <swiper-container #swiperEl init="false" class="template-carousel__swiper">
       @for (slide of slideSet().slides; track slide.key) {
         <swiper-slide class="template-carousel__slide">
-          <app-template-card [item]="slide.item" [active]="slide.key === activeKey()" [carouselVisible]="inView()" />
+          <app-template-card
+            [item]="slide.item"
+            [active]="slide.key === activeKey()"
+            [carouselVisible]="inView()"
+            [slideVisible]="visibleWindow().has(slide.key)"
+          />
         </swiper-slide>
       }
     </swiper-container>

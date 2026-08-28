@@ -1,10 +1,12 @@
 <article class="reel" [class]="'reel--v' + item().variant" [attr.aria-label]="'Template preview: ' + item().title">
-  @if (item().video && carouselVisible()) {
-    <!-- Every card in an on-screen carousel autoplays (muted by default);
-         only the centered card gets sound. Gating on carouselVisible (not
-         just this card's own active state) means the six category carousels
-         stacked down the homepage don't all autoplay at once regardless of
-         scroll position — only whichever one you've actually scrolled to. -->
+  @if (item().video && carouselVisible() && slideVisible()) {
+    <!-- Every nearby card in an on-screen carousel autoplays (muted by
+         default); only the centered card gets sound. carouselVisible stops
+         all six homepage carousels autoplaying regardless of scroll
+         position; slideVisible additionally caps it to the handful of
+         slides actually near the viewport, so a 20-slide carousel doesn't
+         try to open 20 simultaneous video connections at once (browsers cap
+         connections per host at ~6 — past that, videos just stall). -->
     <video #video class="reel__video" [src]="item().video" [poster]="item().poster" [muted]="muted()" autoplay loop playsinline preload="auto"></video>
 
     <button

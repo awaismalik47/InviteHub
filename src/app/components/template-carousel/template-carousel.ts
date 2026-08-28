@@ -69,6 +69,15 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
    * a live, playing video; the rest sit on their poster/placeholder. */
   readonly inView = signal(false);
 
+  /** Keys of the slides currently near the centered position. Browsers cap
+   * simultaneous connections per host at ~6 — with up to 20 slides in a
+   * carousel (real items plus loop-buffer duplicates), letting every one of
+   * them open a video request at once meant most just sat stalled waiting
+   * for a free connection slot, never actually painting a frame despite
+   * technically being "playing". Only slides within this window ever get a
+   * real <video> element; everything further away shows its placeholder. */
+  readonly visibleWindow = signal<Set<string>>(new Set());
+
   private observer?: IntersectionObserver;
 
   constructor(private readonly anim: GsapAnimation) {}
@@ -95,8 +104,12 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
     });
     el.initialize();
     el.swiper?.on('transitionEnd', () => this.snapIntoBuffer());
-    el.swiper?.on('slideChange', () => this.updateActiveKey());
+    el.swiper?.on('slideChange', () => {
+      this.updateActiveKey();
+      this.updateVisibleWindow();
+    });
     this.updateActiveKey();
+    this.updateVisibleWindow();
 
     const sectionEl = this.section().nativeElement;
     this.observer = new IntersectionObserver(
@@ -118,6 +131,23 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
     this.activeKey.set(this.slideSet().slides[swiper.activeIndex]?.key ?? null);
   }
 
+  /** Widest breakpoint shows 5 slides at once — a window of ±2 around the
+   * active index comfortably covers whatever's actually visible at any
+   * breakpoint, plus a one-slide buffer for the next swipe, while staying
+   * safely under the browser's per-host connection cap. */
+  private updateVisibleWindow(): void {
+    const swiper = this.swiperEl().nativeElement.swiper;
+    if (!swiper) return;
+    const slides = this.slideSet().slides;
+    const span = 2;
+    const visible = new Set<string>();
+    for (let i = swiper.activeIndex - span; i <= swiper.activeIndex + span; i++) {
+      const key = slides[i]?.key;
+      if (key) visible.add(key);
+    }
+    this.visibleWindow.set(visible);
+  }
+
   /** Once a transition settles inside a duplicate buffer zone, jump
    * instantly (0ms) to the matching real slide — invisible to the user
    * since it only happens after motion has already stopped. */
@@ -129,9 +159,11 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
     if (index < bufferSize) {
       swiper.slideTo(index + realCount, 0);
       this.updateActiveKey();
+      this.updateVisibleWindow();
     } else if (index >= bufferSize + realCount) {
       swiper.slideTo(index - realCount, 0);
       this.updateActiveKey();
+      this.updateVisibleWindow();
     }
   }
 
