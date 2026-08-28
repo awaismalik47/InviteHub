@@ -1,4 +1,4 @@
-import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, computed, input, viewChild } from '@angular/core';
+import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, computed, input, signal, viewChild } from '@angular/core';
 import { TemplateItem } from '../../data/template-categories';
 import { TemplateCard } from '../template-card/template-card';
 import { GsapAnimation } from '../../services/gsap-animation';
@@ -58,6 +58,9 @@ export class TemplateCarousel implements AfterViewInit {
   private readonly section = viewChild.required<ElementRef<HTMLElement>>('section');
   private readonly swiperEl = viewChild.required<ElementRef<SwiperContainerEl>>('swiperEl');
 
+  /** Key of the currently centered slide — only that card's video plays with sound, every other slide stays muted. */
+  readonly activeKey = signal<string | null>(null);
+
   constructor(private readonly anim: GsapAnimation) {}
 
   ngAfterViewInit(): void {
@@ -82,8 +85,16 @@ export class TemplateCarousel implements AfterViewInit {
     });
     el.initialize();
     el.swiper?.on('transitionEnd', () => this.snapIntoBuffer());
+    el.swiper?.on('slideChange', () => this.updateActiveKey());
+    this.updateActiveKey();
 
     this.anim.revealOnScroll(this.section().nativeElement);
+  }
+
+  private updateActiveKey(): void {
+    const swiper = this.swiperEl().nativeElement.swiper;
+    if (!swiper) return;
+    this.activeKey.set(this.slideSet().slides[swiper.activeIndex]?.key ?? null);
   }
 
   /** Once a transition settles inside a duplicate buffer zone, jump
@@ -96,8 +107,10 @@ export class TemplateCarousel implements AfterViewInit {
     const index = swiper.activeIndex;
     if (index < bufferSize) {
       swiper.slideTo(index + realCount, 0);
+      this.updateActiveKey();
     } else if (index >= bufferSize + realCount) {
       swiper.slideTo(index - realCount, 0);
+      this.updateActiveKey();
     }
   }
 

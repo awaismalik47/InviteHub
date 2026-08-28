@@ -1,6 +1,6 @@
 <article class="reel" [class]="'reel--v' + item().variant" [attr.aria-label]="'Template preview: ' + item().title">
   @if (item().video) {
-    <video class="reel__video" [src]="item().video" [poster]="item().poster" autoplay muted loop playsinline></video>
+    <video class="reel__video" [src]="item().video" [poster]="item().poster" [muted]="!active()" autoplay loop playsinline></video>
   }
 
   <span class="reel__category">{{ item().categoryLabel }}</span>
