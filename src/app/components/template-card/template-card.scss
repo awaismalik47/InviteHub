@@ -76,26 +76,17 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 0.75rem;
+  gap: 1.1rem;
   width: 220%;
-  padding: 0.3em 0;
+  padding: 0.4em 0;
   background: rgba(12, 9, 20, 0.32);
   transform: translate(-50%, -50%) rotate(-9deg);
   white-space: nowrap;
 }
 
-.reel__watermark-text {
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.reel__watermark-dot {
-  font-size: 0.55rem;
-  color: rgba(233, 196, 106, 0.85);
+.reel__watermark-mark {
+  flex-shrink: 0;
+  opacity: 0.85;
 }
 
 .reel__category {
