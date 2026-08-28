@@ -1,6 +1,15 @@
 <article class="reel" [class]="'reel--v' + item().variant" [attr.aria-label]="'Template preview: ' + item().title">
   @if (item().video) {
     <video class="reel__video" [src]="item().video" [poster]="item().poster" [muted]="!active()" autoplay loop playsinline></video>
+
+    <div class="reel__watermark" aria-hidden="true">
+      <div class="reel__watermark-strip">
+        @for (i of [0, 1, 2, 3, 4, 5, 6, 7]; track i) {
+          <span class="reel__watermark-text">InviteVibe</span>
+          <span class="reel__watermark-dot">✦</span>
+        }
+      </div>
+    </div>
   }
 
   <span class="reel__category">{{ item().categoryLabel }}</span>
