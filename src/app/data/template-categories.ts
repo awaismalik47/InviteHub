@@ -66,6 +66,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/retro-rainbow.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-04',
+        title: 'Unicorn Dreams',
+        categoryLabel: 'Birthday',
+        variant: 4,
+        video: 'Birthday-Templates/unicorn-dreams.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
