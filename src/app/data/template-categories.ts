@@ -74,6 +74,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/unicorn-dreams.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-05',
+        title: 'Level Up Party',
+        categoryLabel: 'Birthday',
+        variant: 1,
+        video: 'Birthday-Templates/level-up-party.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
