@@ -50,6 +50,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/little-princess-bash.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-02',
+        title: 'Royal Seal',
+        categoryLabel: 'Birthday',
+        variant: 2,
+        video: 'Birthday-Templates/royal-seal.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
