@@ -79,6 +79,7 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
   readonly visibleWindow = signal<Set<string>>(new Set());
 
   private observer?: IntersectionObserver;
+  private inViewDebounce?: ReturnType<typeof setTimeout>;
 
   constructor(private readonly anim: GsapAnimation) {}
 
@@ -113,7 +114,19 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
 
     const sectionEl = this.section().nativeElement;
     this.observer = new IntersectionObserver(
-      ([entry]) => this.inView.set(entry.isIntersecting),
+      ([entry]) => {
+        // Debounced: the intersection ratio commonly flickers across the
+        // threshold for a frame or two while a scroll settles, which would
+        // otherwise flip inView false-then-true within milliseconds — tearing
+        // down and recreating every video element in the window, aborting
+        // and re-issuing the same requests instead of loading them once.
+        clearTimeout(this.inViewDebounce);
+        const isIntersecting = entry.isIntersecting;
+        this.inViewDebounce = setTimeout(() => {
+          this.inView.set(isIntersecting);
+          this.updateVisibleWindow();
+        }, 150);
+      },
       { rootMargin: '0px 0px -20% 0px', threshold: 0.2 },
     );
     this.observer.observe(sectionEl);
@@ -123,6 +136,7 @@ export class TemplateCarousel implements AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.observer?.disconnect();
+    clearTimeout(this.inViewDebounce);
   }
 
   private updateActiveKey(): void {
