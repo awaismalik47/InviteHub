@@ -58,6 +58,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/royal-seal.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-03',
+        title: 'Retro Rainbow',
+        categoryLabel: 'Birthday',
+        variant: 3,
+        video: 'Birthday-Templates/retro-rainbow.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
