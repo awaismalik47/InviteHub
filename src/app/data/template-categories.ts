@@ -106,6 +106,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/skyline-hero.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-09',
+        title: 'Blue Balloon Bash',
+        categoryLabel: 'Birthday',
+        variant: 1,
+        video: 'Birthday-Templates/blue-balloon-bash.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
