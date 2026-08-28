@@ -82,6 +82,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/level-up-party.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-06',
+        title: 'Golden Glam',
+        categoryLabel: 'Birthday',
+        variant: 2,
+        video: 'Birthday-Templates/golden-glam.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
