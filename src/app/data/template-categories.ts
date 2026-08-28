@@ -98,6 +98,14 @@ export const TEMPLATE_CATEGORIES: TemplateCategoryGroup[] = [
         video: 'Birthday-Templates/superhero-squad.mp4',
         // poster: add a cover/still image path here once one is uploaded for this video.
       },
+      {
+        id: 'bday-08',
+        title: 'Skyline Hero',
+        categoryLabel: 'Birthday',
+        variant: 4,
+        video: 'Birthday-Templates/skyline-hero.mp4',
+        // poster: add a cover/still image path here once one is uploaded for this video.
+      },
     ],
   },
   {
