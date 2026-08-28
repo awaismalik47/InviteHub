@@ -1,4 +1,4 @@
-import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, computed, input, signal, viewChild } from '@angular/core';
+import { AfterViewInit, CUSTOM_ELEMENTS_SCHEMA, Component, ElementRef, OnDestroy, computed, input, signal, viewChild } from '@angular/core';
 import { TemplateItem } from '../../data/template-categories';
 import { TemplateCard } from '../template-card/template-card';
 import { GsapAnimation } from '../../services/gsap-animation';
@@ -38,7 +38,7 @@ const MAX_BUFFER = 5;
   templateUrl: './template-carousel.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class TemplateCarousel implements AfterViewInit {
+export class TemplateCarousel implements AfterViewInit, OnDestroy {
   eyebrow = input.required<string>();
   heading = input.required<string>();
   items = input.required<TemplateItem[]>();
@@ -60,6 +60,16 @@ export class TemplateCarousel implements AfterViewInit {
 
   /** Key of the currently centered slide — only that card's video plays with sound, every other slide stays muted. */
   readonly activeKey = signal<string | null>(null);
+
+  /** Whether this carousel is actually on-screen. With up to six of these
+   * stacked down the homepage, letting every one of them autoplay its video
+   * on page load — regardless of scroll position — meant several concurrent
+   * video decodes competing with the hero's entrance animation for the main
+   * thread. Only the carousel the visitor has actually scrolled to now gets
+   * a live, playing video; the rest sit on their poster/placeholder. */
+  readonly inView = signal(false);
+
+  private observer?: IntersectionObserver;
 
   constructor(private readonly anim: GsapAnimation) {}
 
@@ -88,7 +98,18 @@ export class TemplateCarousel implements AfterViewInit {
     el.swiper?.on('slideChange', () => this.updateActiveKey());
     this.updateActiveKey();
 
-    this.anim.revealOnScroll(this.section().nativeElement);
+    const sectionEl = this.section().nativeElement;
+    this.observer = new IntersectionObserver(
+      ([entry]) => this.inView.set(entry.isIntersecting),
+      { rootMargin: '0px 0px -20% 0px', threshold: 0.2 },
+    );
+    this.observer.observe(sectionEl);
+
+    this.anim.revealOnScroll(sectionEl);
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
   }
 
   private updateActiveKey(): void {
